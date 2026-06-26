@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;height:100%}
+  *{box-sizing:border-box}
+  ::selection{background:#cfe0fb;color:#15315f}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#cdd6e2;border-radius:8px;border:3px solid transparent;background-clip:content-box}
+  ::-webkit-scrollbar-thumb:hover{background:#b6c1d2;background-clip:content-box}
+  @keyframes twinkle{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.82)}}
+</style>
+</helmet>
+
+<div style="height:100vh;display:flex;flex-direction:column;font-family:'Hanken Grotesk',system-ui,sans-serif;background:#eaeef3;color:#1b2230;overflow:hidden;-webkit-font-smoothing:antialiased">
+
+  <!-- ============ TOP NAV ============ -->
+  <header style="flex:none;height:66px;display:flex;align-items:center;gap:22px;padding:0 22px;background:#ffffff;border-bottom:1px solid #e4e9f0;z-index:5">
+    <div style="display:flex;align-items:center;gap:11px;flex:none">
+      <div style="width:30px;height:30px;border-radius:9px;background:#2f6bdd;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px">M</div>
+      <span style="font-size:19px;font-weight:700;letter-spacing:-0.02em">Minute</span>
+    </div>
+
+    <div style="flex:1;display:flex;justify-content:center">
+      <div style="display:flex;align-items:center;gap:10px;width:100%;max-width:580px;height:42px;padding:0 8px 0 14px;background:#f3f6fa;border:1px solid #e4e9f0;border-radius:11px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#8a94a4" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4" stroke-linecap="round"></path></svg>
+        <input value="{{ search }}" onInput="{{ onSearch }}" placeholder="Search companies, people, meetings…" style="flex:1;border:none;background:transparent;outline:none;font-family:inherit;font-size:14.5px;color:#1b2230" />
+        <div style="display:flex;align-items:center;gap:6px;flex:none;padding:5px 11px;background:#fff;border:1px solid #e4e9f0;border-radius:8px;font-size:13px;color:#515c6e;font-weight:500;cursor:pointer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8a94a4" stroke-width="2" stroke-linecap="round"><path d="M3 5h18M6 12h12M10 19h4"></path></svg>
+          Filters
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;flex:none">
+      <button style="display:flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:1px solid #cfe0fb;border-radius:11px;background:linear-gradient(180deg,#eff5fe,#e1ecfd);color:#2357c4;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer" style-hover="background:linear-gradient(180deg,#e7f0fd,#d5e5fc)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="animation:twinkle 2.4s ease-in-out infinite"><path d="M12 2l1.5 6.1L19.5 10l-6 1.5L12 18l-1.5-6.5L4.5 10l6-1.9z"></path><path d="M19 14l.7 2.6L22 17l-2.3.6L19 20l-.7-2.4L16 17l2.3-.4z"></path></svg>
+        Ask AI
+      </button>
+      <button style="display:flex;align-items:center;gap:8px;height:42px;padding:0 18px;border:none;border-radius:11px;background:#2f6bdd;color:#fff;font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer;box-shadow:0 1px 2px rgba(30,70,160,.28)" style-hover="background:#2357c4">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        New meeting
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ BODY ============ -->
+  <div style="flex:1;display:flex;min-height:0;overflow-x:auto">
+
+    <!-- ===== PANE 1 : CONTACTS ===== -->
+    <aside style="width:266px;flex:0 1 266px;min-width:236px;background:#f1f4f8;border-right:1px solid #e4e9f0;display:flex;flex-direction:column;min-height:0">
+      <div style="flex:none;padding:18px 16px 12px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:13px">
+          <span style="font-size:15px;font-weight:700;letter-spacing:-0.01em">Contacts</span>
+          <span style="font-size:12px;color:#aab3c1;font-weight:500">{{ entityCount }}</span>
+        </div>
+        <div style="display:flex;gap:3px;padding:3px;background:#e3e8ef;border-radius:10px">
+          <button onClick="{{ setCatAll }}" style="{{ tabAllStyle }}">All</button>
+          <button onClick="{{ setCatBiz }}" style="{{ tabBizStyle }}">Business</button>
+          <button onClick="{{ setCatPersonal }}" style="{{ tabPersonalStyle }}">Personal</button>
+        </div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:0 10px 16px">
+        <sc-for list="{{ entities }}" as="entity" hint-placeholder-count="6">
+          <div onClick="{{ entity.onSelect }}" style="{{ entity.rowStyle }}">
+            <div style="{{ entity.avatarStyle }}">{{ entity.initials }}</div>
+            <div style="flex:1;min-width:0">
+              <div style="{{ entity.nameStyle }}">{{ entity.name }}</div>
+              <div style="font-size:12px;color:#aab3c1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ entity.meta }}</div>
+            </div>
+            <span style="{{ entity.badgeStyle }}">{{ entity.meetingCount }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </aside>
+
+    <!-- ===== PANE 2 : MEETINGS LIST ===== -->
+    <section style="width:328px;flex:0 1 328px;min-width:286px;background:#ffffff;border-right:1px solid #e4e9f0;display:flex;flex-direction:column;min-height:0">
+      <div style="flex:none;padding:18px 20px 14px;border-bottom:1px solid #eef2f7">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:3px">
+          <div style="{{ selectedEntity.avatarStyle }}">{{ selectedEntity.initials }}</div>
+          <span style="font-size:17px;font-weight:700;letter-spacing:-0.01em">{{ selectedEntity.name }}</span>
+        </div>
+        <div style="font-size:12.5px;color:#aab3c1;padding-left:42px">{{ selectedEntity.meta }} · {{ meetingsCountLabel }}</div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:10px 12px 16px">
+        <sc-for list="{{ meetings }}" as="m" hint-placeholder-count="4">
+          <div onClick="{{ m.onSelect }}" style="{{ m.rowStyle }}">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+              <span style="font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:#2f6bdd">{{ m.dateLabel }}</span>
+              <span style="{{ m.openPillStyle }}">{{ m.openLabel }}</span>
+            </div>
+            <div style="font-size:15px;font-weight:600;line-height:1.3;color:#222b3a;margin-bottom:7px;letter-spacing:-0.01em">{{ m.title }}</div>
+            <div style="font-size:12px;color:#aab3c1">{{ m.attendeesLabel }}</div>
+          </div>
+        </sc-for>
+
+        <div style="margin-top:8px;padding:16px 14px;border:1.5px dashed #cdd7e3;border-radius:12px;text-align:center;cursor:pointer;background:#f5f8fb" style-hover="background:#eef3fa;border-color:#bcccde">
+          <div style="display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:#5d6b80">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2f6bdd" stroke-width="2" stroke-linecap="round"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M5 21h14"></path></svg>
+            Paste or drop old notes
+          </div>
+          <div style="font-size:11.5px;color:#aab3c1;margin-top:3px">AI will structure them into a meeting</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PANE 3 : MEETING DETAIL ===== -->
+    <main style="flex:1 1 auto;min-width:440px;background:#eaeef3;overflow-y:auto">
+      <div style="max-width:760px;margin:0 auto;padding:34px 40px 64px">
+        <div style="background:#fff;border:1px solid #e4e9f0;border-radius:16px;padding:40px 44px;box-shadow:0 1px 3px rgba(30,50,90,.05)">
+
+          <div style="display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#2f6bdd;margin-bottom:14px">
+            <span>{{ selectedMeeting.dateLabel }}</span>
+            <span style="color:#c8d2e0">·</span>
+            <span style="color:#aab3c1;font-weight:500;text-transform:none;letter-spacing:0">{{ selectedEntity.name }}</span>
+          </div>
+
+          <h1 style="font-size:31px;font-weight:800;line-height:1.18;letter-spacing:-0.025em;margin:0 0 18px;color:#16203a;text-wrap:pretty">{{ selectedMeeting.title }}</h1>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:24px;margin-bottom:28px;border-bottom:1px solid #eef2f7">
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="{{ selectedMeeting.avatarsStyle }}">
+                <sc-for list="{{ selectedMeeting.attendeeAvatars }}" as="av" hint-placeholder-count="3">
+                  <div style="{{ av.style }}">{{ av.initials }}</div>
+                </sc-for>
+              </div>
+              <span style="font-size:13px;color:#76808f">{{ selectedMeeting.attendeesLabel }}</span>
+            </div>
+            <button style="display:flex;align-items:center;gap:9px;height:44px;padding:0 20px;border:1px solid #cfe0fb;border-radius:12px;background:linear-gradient(180deg,#eff5fe,#e1ecfd);color:#2357c4;font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer" style-hover="background:linear-gradient(180deg,#e7f0fd,#d5e5fc)">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="animation:twinkle 2.4s ease-in-out infinite"><path d="M12 2l1.5 6.1L19.5 10l-6 1.5L12 18l-1.5-6.5L4.5 10l6-1.9z"></path><path d="M19 14l.7 2.6L22 17l-2.3.6L19 20l-.7-2.4L16 17l2.3-.4z"></path></svg>
+              Summarize with AI
+            </button>
+          </div>
+
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#a6b0bf;margin-bottom:12px">Executive summary</div>
+          <div style="font-size:15.5px;line-height:1.68;color:#3c4658">
+            <sc-for list="{{ selectedMeeting.summary }}" as="para" hint-placeholder-count="3">
+              <p style="margin:0 0 15px">{{ para }}</p>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;margin:34px 0 14px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#a6b0bf">Notes</div>
+            <button style="display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid #e4e9f0;border-radius:9px;background:#f5f8fb;color:#515c6e;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer" style-hover="background:#eaf0f7">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2f6bdd" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+              Add note
+            </button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ selectedMeeting.notes }}" as="note" hint-placeholder-count="2">
+              <div style="display:flex;gap:11px;padding:13px 15px;background:#f5f8fb;border:1px solid #eef2f7;border-radius:11px">
+                <div style="width:6px;height:6px;border-radius:50%;background:#9fb4d6;margin-top:8px;flex:none"></div>
+                <div style="font-size:14px;line-height:1.6;color:#43505f">{{ note }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ===== PANE 4 : ACTION ITEMS ===== -->
+    <aside style="width:344px;flex:0 1 344px;min-width:300px;background:#f1f4f8;border-left:1px solid #e4e9f0;display:flex;flex-direction:column;min-height:0">
+      <div style="flex:none;padding:18px 20px 15px;border-bottom:1px solid #e4e9f0">
+        <div style="font-size:15px;font-weight:700;margin-bottom:11px;letter-spacing:-0.01em">Action items</div>
+        <div style="display:flex;gap:8px">
+          <div style="flex:1;background:#fff;border:1px solid #e8edf3;border-radius:10px;padding:9px 12px">
+            <div style="font-size:22px;font-weight:800;color:#2f6bdd;line-height:1">{{ openCount }}</div>
+            <div style="font-size:11.5px;color:#aab3c1;font-weight:500;margin-top:2px">Open</div>
+          </div>
+          <div style="flex:1;background:#fff;border:1px solid #e8edf3;border-radius:10px;padding:9px 12px">
+            <div style="font-size:22px;font-weight:800;color:#2f9e6f;line-height:1">{{ completedCount }}</div>
+            <div style="font-size:11.5px;color:#aab3c1;font-weight:500;margin-top:2px">Completed</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;overflow-y:auto;padding:8px 14px 20px">
+        <sc-for list="{{ actionGroups }}" as="grp" hint-placeholder-count="3">
+          <div style="margin-top:14px">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:8px;padding:0 2px">
+              <div style="{{ grp.avatarStyle }}">{{ grp.initials }}</div>
+              <div style="min-width:0">
+                <div style="font-size:13.5px;font-weight:600;color:#222b3a;line-height:1.2">{{ grp.person }}</div>
+                <div style="font-size:11px;color:#aab3c1">{{ grp.role }}</div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <sc-for list="{{ grp.items }}" as="item" hint-placeholder-count="2">
+                <div onClick="{{ item.onToggle }}" style="display:flex;gap:11px;padding:11px 13px;background:#fff;border:1px solid #e8edf3;border-radius:11px;cursor:pointer" style-hover="border-color:#c4d3e8">
+                  <div style="{{ item.boxStyle }}">
+                    <sc-if value="{{ item.completed }}" hint-placeholder-val="{{ true }}">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+                    </sc-if>
+                  </div>
+                  <div style="flex:1;min-width:0">
+                    <div style="{{ item.textStyle }}">{{ item.text }}</div>
+                    <div style="{{ item.statusStyle }}">{{ item.statusLabel }}</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </aside>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  data = buildData();
+  state = {
+    selectedEntityId: 'northwind',
+    selectedMeetingId: 'nw-q2',
+    activeCat: 'all',
+    search: '',
+    statuses: seedStatuses(buildData())
+  };
+
+  // ---- helpers ----
+  fmtLong(iso){const M=['January','February','March','April','May','June','July','August','September','October','November','December'];const d=new Date(iso+'T00:00:00');return d.getDate()+' '+M[d.getMonth()]+' '+d.getFullYear();}
+  fmtShort(iso){const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];const d=new Date(iso+'T00:00:00');return d.getDate()+' '+M[d.getMonth()];}
+  avatarColor(s){const p=['#2f6bdd','#4f74a8','#5b8c8a','#6a6fb0','#7a86a0','#3f8f8a','#8a6fa8'];let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return p[h%p.length];}
+  initials(name){const w=name.trim().split(/\s+/);return (w[0][0]+(w[1]?w[1][0]:'')).toUpperCase();}
+
+  baseAvatar(name,type){
+    const r = type==='person' ? '50%' : '9px';
+    return `width:34px;height:34px;flex:none;border-radius:${r};background:${this.avatarColor(name)};color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700`;
+  }
+
+  tabStyle(cat){
+    const on = this.state.activeCat===cat;
+    return `flex:1;padding:6px 4px;border:none;border-radius:8px;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;`+
+      (on ? 'background:#fff;color:#1b2230;box-shadow:0 1px 2px rgba(30,50,90,.12)' : 'background:transparent;color:#7a86a0');
+  }
+
+  filteredEntities(){
+    const q = this.state.search.trim().toLowerCase();
+    return this.data.filter(e=>{
+      if(this.state.activeCat!=='all' && e.category!==this.state.activeCat) return false;
+      if(!q) return true;
+      if(e.name.toLowerCase().includes(q) || e.meta.toLowerCase().includes(q)) return true;
+      return e.meetings.some(m=>m.title.toLowerCase().includes(q));
+    });
+  }
+
+  getEntity(id){return this.data.find(e=>e.id===id) || this.data[0];}
+
+  renderVals(){
+    const ents = this.filteredEntities();
+    const selEnt = this.getEntity(this.state.selectedEntityId);
+    const meetings = selEnt.meetings.slice().sort((a,b)=>b.date.localeCompare(a.date));
+    let selMeeting = meetings.find(m=>m.id===this.state.selectedMeetingId) || meetings[0];
+
+    // entity rows
+    const entities = ents.map(e=>{
+      const sel = e.id===selEnt.id;
+      return {
+        name:e.name, meta:e.meta, initials:this.initials(e.name), meetingCount:e.meetings.length,
+        onSelect:()=>{const first=e.meetings.slice().sort((a,b)=>b.date.localeCompare(a.date))[0];this.setState({selectedEntityId:e.id, selectedMeetingId:first?first.id:null});},
+        avatarStyle:this.baseAvatar(e.name,e.type),
+        nameStyle:`font-size:14px;font-weight:${sel?700:500};color:#222b3a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:1px`,
+        rowStyle:`display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:11px;cursor:pointer;margin-bottom:2px;border-left:3px solid ${sel?'#2f6bdd':'transparent'};background:${sel?'#fff':'transparent'};box-shadow:${sel?'0 1px 2px rgba(30,50,90,.08)':'none'}`,
+        badgeStyle:`flex:none;min-width:20px;height:20px;padding:0 6px;border-radius:7px;background:${sel?'#e7f0fd':'#e3e8ef'};color:${sel?'#2f6bdd':'#aab3c1'};font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center`
+      };
+    });
+
+    // meeting list rows
+    const mRows = meetings.map(m=>{
+      const sel = selMeeting && m.id===selMeeting.id;
+      const open = m.actions.filter(a=>this.state.statuses[a.id]!=='completed').length;
+      return {
+        title:m.title, dateLabel:this.fmtLong(m.date), attendeesLabel:this.attLabel(m.attendees),
+        onSelect:()=>this.setState({selectedMeetingId:m.id}),
+        openLabel: open>0 ? open+' open' : 'Done',
+        openPillStyle: open>0
+          ? 'flex:none;padding:2px 8px;border-radius:7px;background:#e7f0fd;color:#2f6bdd;font-size:11px;font-weight:600'
+          : 'flex:none;padding:2px 8px;border-radius:7px;background:#e4f3ec;color:#2f9e6f;font-size:11px;font-weight:600',
+        rowStyle:`padding:13px 14px;border-radius:13px;cursor:pointer;margin-bottom:6px;border:1px solid ${sel?'#c4dafb':'#eef2f7'};background:${sel?'#f4f8fe':'#fff'};box-shadow:${sel?'0 1px 3px rgba(30,70,160,.08)':'none'}`
+      };
+    });
+
+    // detail attendee avatars (overlapping)
+    const attAvatars = selMeeting.attendees.slice(0,5).map((n,i)=>({
+      initials:this.initials(n),
+      style:`width:28px;height:28px;border-radius:50%;background:${this.avatarColor(n)};color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;border:2px solid #fff;margin-left:${i===0?0:-9}px`
+    }));
+
+    // action groups by person
+    const order=[]; const map={};
+    selMeeting.actions.forEach(a=>{
+      if(!map[a.person]){map[a.person]={person:a.person,role:a.role,items:[]};order.push(a.person);}
+      const completed = this.state.statuses[a.id]==='completed';
+      const today = new Date(); today.setHours(0,0,0,0);
+      const overdue = !completed && a.due && new Date(a.due+'T00:00:00') < today;
+      let statusLabel, statusColor;
+      if(completed){statusLabel='Completed'; statusColor='#2f9e6f';}
+      else if(overdue){statusLabel='Overdue · '+this.fmtShort(a.due); statusColor='#d6494e';}
+      else if(a.due){statusLabel='Due '+this.fmtShort(a.due); statusColor='#9aa4b3';}
+      else {statusLabel='Open'; statusColor='#9aa4b3';}
+      map[a.person].items.push({
+        text:a.text, completed,
+        statusLabel,
+        statusStyle:`font-size:11.5px;font-weight:${overdue?600:500};color:${statusColor};margin-top:3px`,
+        textStyle:`font-size:13.5px;line-height:1.45;color:${completed?'#aab3c1':'#2f3947'};${completed?'text-decoration:line-through':''}`,
+        boxStyle:`width:20px;height:20px;flex:none;border-radius:6px;margin-top:1px;display:flex;align-items:center;justify-content:center;`+
+          (completed?'background:#2f9e6f;border:1px solid #2f9e6f':'background:#fff;border:1.6px solid #cdd6e2'),
+        onToggle:()=>this.setState(s=>({statuses:{...s.statuses,[a.id]:s.statuses[a.id]==='completed'?'open':'completed'}}))
+      });
+    });
+    const actionGroups = order.map(p=>({
+      person:map[p].person, role:map[p].role, initials:this.initials(map[p].person),
+      avatarStyle:`width:30px;height:30px;flex:none;border-radius:50%;background:${this.avatarColor(map[p].person)};color:#fff;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700`,
+      items:map[p].items
+    }));
+
+    const allActs = selMeeting.actions;
+    const completedCount = allActs.filter(a=>this.state.statuses[a.id]==='completed').length;
+
+    return {
+      search:this.state.search,
+      onSearch:e=>this.setState({search:e.target.value}),
+      entityCount: ents.length,
+      setCatAll:()=>this.setState({activeCat:'all'}),
+      setCatBiz:()=>this.setState({activeCat:'business'}),
+      setCatPersonal:()=>this.setState({activeCat:'personal'}),
+      tabAllStyle:this.tabStyle('all'),
+      tabBizStyle:this.tabStyle('business'),
+      tabPersonalStyle:this.tabStyle('personal'),
+      entities,
+      selectedEntity:{name:selEnt.name, meta:selEnt.meta, initials:this.initials(selEnt.name), avatarStyle:this.baseAvatar(selEnt.name,selEnt.type)},
+      meetingsCountLabel: selEnt.meetings.length+' meeting'+(selEnt.meetings.length===1?'':'s'),
+      meetings:mRows,
+      selectedMeeting:{
+        title:selMeeting.title, dateLabel:this.fmtLong(selMeeting.date),
+        attendeesLabel:this.attLabel(selMeeting.attendees),
+        summary:selMeeting.summary, notes:selMeeting.notes,
+        attendeeAvatars:attAvatars,
+        avatarsStyle:'display:flex;align-items:center'
+      },
+      actionGroups,
+      openCount: allActs.length-completedCount,
+      completedCount
+    };
+  }
+
+  attLabel(att){
+    if(att.length<=2) return att.join(', ');
+    return att.slice(0,2).join(', ')+' +'+(att.length-2);
+  }
+}
+
+function seedStatuses(data){const m={};data.forEach(e=>e.meetings.forEach(mt=>mt.actions.forEach(a=>{m[a.id]=a.status;})));return m;}
+
+function buildData(){
+  return [
+    {id:'northwind',name:'Northwind Trading',type:'company',category:'business',meta:'Logistics · 8 contacts',meetings:[
+      {id:'nw-q2',date:'2026-06-12',title:'Q2 Logistics & Carrier Review',attendees:['You','Marcus Reed','Priya Nair','Dana Whitlock'],
+        summary:['We reviewed Q2 carrier performance against the renegotiated SLAs. On-time delivery climbed to 94.2%, but two coastal lanes continued to underperform and are dragging the regional average. The team agreed that consolidating those lanes under a single carrier is the most viable path before peak season.',
+          'Priya presented an updated cost model showing a projected 6% freight savings if renewals close before the end of June. Marcus will lead the carrier negotiations, with a revised SLA draft circulating to all parties this week. We close on a decision at the next sync.'],
+        notes:['Dana flagged that the new WMS rollout may shift KPI baselines — revisit metrics in July.','Peak-season capacity buffer should be locked by mid-July at the latest.'],
+        actions:[
+          {id:'nwq2-1',person:'You',role:'Account lead',text:'Send revised SLA draft to all carriers',due:'2026-06-24',status:'open'},
+          {id:'nwq2-2',person:'Marcus Reed',role:'Ops director',text:'Finalize carrier contract renewals',due:'2026-06-27',status:'open'},
+          {id:'nwq2-3',person:'Marcus Reed',role:'Ops director',text:'Flag underperforming coastal lanes for Q3',due:'2026-06-16',status:'open'},
+          {id:'nwq2-4',person:'Priya Nair',role:'Finance',text:'Share updated freight cost model',due:null,status:'completed'},
+          {id:'nwq2-5',person:'Dana Whitlock',role:'Warehouse',text:'Circulate latest warehouse KPIs',due:null,status:'completed'}
+        ]},
+      {id:'nw-auto',date:'2026-05-04',title:'Warehouse Automation Kickoff',attendees:['You','Priya Nair','Sam Ortiz'],
+        summary:['Kicked off the automation initiative for the Reno distribution center. Sam walked through three vendor proposals; the team favored a phased pick-and-pack rollout to limit downtime during the transition.',
+          'Budget approval is pending a final ROI memo. Priya will model the payback period under conservative throughput assumptions before we commit.'],
+        notes:['Vendor demos scheduled for the last week of May.'],
+        actions:[
+          {id:'nwa-1',person:'Sam Ortiz',role:'Automation',text:'Shortlist two vendors for on-site demo',due:'2026-05-22',status:'completed'},
+          {id:'nwa-2',person:'Priya Nair',role:'Finance',text:'Draft ROI memo for budget approval',due:'2026-05-30',status:'completed'},
+          {id:'nwa-3',person:'You',role:'Account lead',text:'Confirm downtime window with operations',due:'2026-05-28',status:'completed'}
+        ]},
+      {id:'nw-renew',date:'2026-03-18',title:'Annual Contract Renewal',attendees:['You','Marcus Reed'],
+        summary:['Annual master services agreement reviewed and renewed for another 24-month term. Pricing held flat with an added volume-discount tier above 10,000 units per quarter.',
+          'Legal redlines were minor and resolved on the call. Signed copies to follow.'],
+        notes:['Volume tier kicks in automatically once threshold is hit — no amendment needed.'],
+        actions:[
+          {id:'nwr-1',person:'Marcus Reed',role:'Ops director',text:'Countersign and file the renewed MSA',due:null,status:'completed'},
+          {id:'nwr-2',person:'You',role:'Account lead',text:'Update CRM with new contract terms',due:null,status:'completed'}
+        ]}
+    ]},
+    {id:'atlas',name:'Atlas Robotics',type:'company',category:'business',meta:'Manufacturing · 5 contacts',meetings:[
+      {id:'at-pilot',date:'2026-06-09',title:'Pilot Deployment Sync',attendees:['You','Elena Park','Toby Grant'],
+        summary:['The pilot cell has been running for three weeks with throughput beating the baseline by 11%. Two intermittent sensor faults were traced to firmware and patched mid-week.',
+          'Elena recommends extending the pilot by two weeks before a go/no-go decision so we capture a full maintenance cycle.'],
+        notes:['Firmware v2.4 resolved the sensor dropouts — monitor through next cycle.'],
+        actions:[
+          {id:'atp-1',person:'Elena Park',role:'Eng lead',text:'Extend pilot window and document maintenance cycle',due:'2026-06-23',status:'open'},
+          {id:'atp-2',person:'You',role:'Account lead',text:'Prepare go/no-go decision deck',due:'2026-06-25',status:'open'},
+          {id:'atp-3',person:'Toby Grant',role:'Field tech',text:'Log sensor fault root-cause report',due:null,status:'completed'}
+        ]},
+      {id:'at-plan',date:'2026-04-22',title:'Integration Planning',attendees:['You','Elena Park'],
+        summary:['Mapped the integration points between the robotics control layer and the existing MES. Identified the API gateway as the critical dependency.',
+          'A staging environment will be stood up before any production wiring.'],
+        notes:[],
+        actions:[
+          {id:'atpl-1',person:'Elena Park',role:'Eng lead',text:'Provision staging environment',due:null,status:'completed'},
+          {id:'atpl-2',person:'You',role:'Account lead',text:'Share MES API documentation',due:null,status:'completed'}
+        ]}
+    ]},
+    {id:'meridian',name:'Meridian Health',type:'company',category:'business',meta:'Healthcare · 4 contacts',meetings:[
+      {id:'me-comp',date:'2026-05-28',title:'Compliance & Onboarding',attendees:['You','Dr. Anya Rao','Liam Foster'],
+        summary:['Walked through HIPAA-aligned onboarding requirements. All data handling will route through the audited environment, and access is role-scoped from day one.',
+          'Liam raised a question on retention windows; legal to confirm the exact policy before go-live.'],
+        notes:['Go-live target is mid-June pending the retention sign-off.'],
+        actions:[
+          {id:'mec-1',person:'Liam Foster',role:'Compliance',text:'Confirm data retention policy with legal',due:'2026-06-20',status:'open'},
+          {id:'mec-2',person:'You',role:'Account lead',text:'Provision role-scoped access for clinical staff',due:'2026-06-18',status:'open'},
+          {id:'mec-3',person:'Dr. Anya Rao',role:'Clinical lead',text:'Approve onboarding training schedule',due:null,status:'completed'}
+        ]}
+    ]},
+    {id:'harbor',name:'Harbor & Vance',type:'company',category:'business',meta:'Legal counsel · 3 contacts',meetings:[
+      {id:'hv-red',date:'2026-06-02',title:'Contract Red-lines',attendees:['You','Gina Vance'],
+        summary:['Reviewed Gina’s redlines on the partnership agreement. The indemnification clause and the termination-for-convenience window were the two open items.',
+          'We reached alignment on indemnification; the termination window is still under discussion pending business input.'],
+        notes:['Aim to close all redlines before the end of the month.'],
+        actions:[
+          {id:'hvr-1',person:'Gina Vance',role:'Counsel',text:'Send revised indemnification language',due:'2026-06-21',status:'open'},
+          {id:'hvr-2',person:'You',role:'Account lead',text:'Get business sign-off on termination window',due:'2026-06-19',status:'open'}
+        ]}
+    ]},
+    {id:'sarah',name:'Sarah Chen',type:'person',category:'personal',meta:'Designer · Friend',meetings:[
+      {id:'sc-port',date:'2026-06-07',title:'Portfolio Site Brainstorm',attendees:['You','Sarah Chen'],
+        summary:['Brainstormed directions for Sarah’s new portfolio. She’s leaning into an editorial, type-forward layout with large case-study spreads rather than a grid of thumbnails.',
+          'We sketched a rough structure: a quiet landing, three flagship case studies, and a short about page. Next step is collecting the case-study assets.'],
+        notes:['Sarah loves clean, type-forward layouts — keep it understated.'],
+        actions:[
+          {id:'scp-1',person:'Sarah Chen',role:'Designer',text:'Gather case-study screenshots and write-ups',due:'2026-06-28',status:'open'},
+          {id:'scp-2',person:'You',role:'You',text:'Send over the layout references we liked',due:null,status:'completed'}
+        ]}
+    ]},
+    {id:'lena',name:'Lena Voss',type:'person',category:'business',meta:'Partner, Voss Capital',meetings:[
+      {id:'lv-seed',date:'2026-06-10',title:'Seed Round Discussion',attendees:['You','Lena Voss'],
+        summary:['Initial conversation about a potential seed investment. Lena was positive on the traction numbers and asked for a closer look at retention cohorts and burn.',
+          'She’d like to see an updated data room before bringing it to her partners. No commitment yet, but the door is clearly open.'],
+        notes:['Lena prefers concise decks — lead with the cohort chart.'],
+        actions:[
+          {id:'lvs-1',person:'You',role:'You',text:'Refresh the data room with Q2 cohorts and burn',due:'2026-06-22',status:'open'},
+          {id:'lvs-2',person:'Lena Voss',role:'Partner',text:'Circulate teaser to investment committee',due:'2026-06-26',status:'open'}
+        ]}
+    ]},
+    {id:'david',name:'David Okafor',type:'person',category:'personal',meta:'Accountant',meetings:[
+      {id:'do-tax',date:'2026-04-15',title:'Tax Planning 2026',attendees:['You','David Okafor'],
+        summary:['Reviewed estimated quarterly payments and a couple of deduction opportunities for the year. David flagged the home-office and equipment write-offs as the cleanest wins.',
+          'Records are in good shape; just a few receipts outstanding before the next filing.'],
+        notes:['Keep equipment receipts in the shared folder going forward.'],
+        actions:[
+          {id:'dot-1',person:'You',role:'You',text:'Upload outstanding equipment receipts',due:null,status:'completed'},
+          {id:'dot-2',person:'David Okafor',role:'Accountant',text:'File Q2 estimated payment',due:null,status:'completed'}
+        ]}
+    ]}
+  ];
+}
+</script>
+</body>
+</html>

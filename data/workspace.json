@@ -1,0 +1,2568 @@
+{
+  "workspace": {
+    "id": "workspace_001",
+    "name": "Meeting Workspace",
+    "slug": "meeting-workspace",
+    "ownerUserId": "user_001",
+    "createdAt": "2026-06-12T10:00:00Z",
+    "updatedAt": "2026-06-19T20:17:51.812Z",
+    "settings": {
+      "defaultMeetingVisibility": "private",
+      "enableAiSummaries": true,
+      "enableActionExtraction": true,
+      "enableTranscriptUpload": true,
+      "enableMeetingRecording": false,
+      "defaultActionDueDays": 7
+    }
+  },
+  "users": [
+    {
+      "id": "user_001",
+      "workspaceId": "workspace_001",
+      "firstName": "Dwain",
+      "lastName": "Browne",
+      "displayName": "Dwain Browne",
+      "email": "dwain@example.com",
+      "avatarUrl": null,
+      "initials": "DB",
+      "role": "admin",
+      "status": "active",
+      "createdAt": "2026-06-12T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    }
+  ],
+  "companies": [
+    {
+      "id": "company_northwind",
+      "workspaceId": "workspace_001",
+      "name": "Northwind Trading",
+      "type": "business",
+      "industry": "Logistics",
+      "description": "Logistics company with recurring carrier review meetings.",
+      "website": "https://example.com",
+      "emailDomain": "northwind.example.com",
+      "phone": "+1-555-000-0000",
+      "address": {
+        "line1": "",
+        "line2": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "country": ""
+      },
+      "tags": [
+        "logistics",
+        "carrier-management",
+        "active-account"
+      ],
+      "status": "active",
+      "relationshipOwnerUserId": "user_001",
+      "stats": {
+        "contactCount": 4,
+        "meetingCount": 3,
+        "openActionCount": 3,
+        "completedActionCount": 7,
+        "lastMeetingAt": "2026-06-12T15:00:00Z",
+        "nextMeetingAt": null
+      },
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-19T20:17:51.812Z",
+      "showInWorkspaceList": true,
+      "workspaceListOrder": 1
+    },
+    {
+      "id": "company_atlas",
+      "workspaceId": "workspace_001",
+      "name": "Atlas Robotics",
+      "type": "business",
+      "industry": "Manufacturing",
+      "description": "Manufacturing automation pilot customer.",
+      "website": "https://example.com",
+      "emailDomain": "atlas.example.com",
+      "phone": "+1-555-000-0001",
+      "address": {
+        "line1": "",
+        "line2": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "country": ""
+      },
+      "tags": [
+        "robotics",
+        "pilot"
+      ],
+      "status": "active",
+      "relationshipOwnerUserId": "user_001",
+      "stats": {
+        "contactCount": 2,
+        "meetingCount": 2,
+        "openActionCount": 2,
+        "completedActionCount": 3,
+        "lastMeetingAt": "2026-06-09T15:00:00Z",
+        "nextMeetingAt": null
+      },
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-19T20:17:51.812Z",
+      "showInWorkspaceList": true,
+      "workspaceListOrder": 2
+    },
+    {
+      "id": "company_meridian",
+      "workspaceId": "workspace_001",
+      "name": "Meridian Health",
+      "type": "business",
+      "industry": "Healthcare",
+      "description": "Healthcare onboarding and compliance partner.",
+      "website": "https://example.com",
+      "emailDomain": "meridian.example.com",
+      "phone": "+1-555-000-0002",
+      "address": {
+        "line1": "",
+        "line2": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "country": ""
+      },
+      "tags": [
+        "healthcare",
+        "compliance"
+      ],
+      "status": "active",
+      "relationshipOwnerUserId": "user_001",
+      "stats": {
+        "contactCount": 2,
+        "meetingCount": 1,
+        "openActionCount": 2,
+        "completedActionCount": 1,
+        "lastMeetingAt": "2026-05-28T15:00:00Z",
+        "nextMeetingAt": null
+      },
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-19T20:17:51.812Z",
+      "showInWorkspaceList": true,
+      "workspaceListOrder": 3
+    },
+    {
+      "id": "company_harbor_vance",
+      "workspaceId": "workspace_001",
+      "name": "Harbor & Vance",
+      "type": "business",
+      "industry": "Legal counsel",
+      "description": "Outside counsel for contract redlines.",
+      "website": "https://example.com",
+      "emailDomain": "harborvance.example.com",
+      "phone": "+1-555-000-0003",
+      "address": {
+        "line1": "",
+        "line2": "",
+        "city": "",
+        "state": "",
+        "postalCode": "",
+        "country": ""
+      },
+      "tags": [
+        "legal",
+        "contracts"
+      ],
+      "status": "active",
+      "relationshipOwnerUserId": "user_001",
+      "stats": {
+        "contactCount": 1,
+        "meetingCount": 1,
+        "openActionCount": 2,
+        "completedActionCount": 0,
+        "lastMeetingAt": "2026-06-02T15:00:00Z",
+        "nextMeetingAt": null
+      },
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-19T20:17:51.812Z",
+      "showInWorkspaceList": true,
+      "workspaceListOrder": 4
+    }
+  ],
+  "contacts": [
+    {
+      "id": "contact_marcus_reed",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "firstName": "Marcus",
+      "lastName": "Reed",
+      "displayName": "Marcus Reed",
+      "email": "marcus.reed@northwind.example.com",
+      "phone": "+1-555-111-2222",
+      "jobTitle": "Ops director",
+      "department": "Operations",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "MR",
+      "status": "active",
+      "relationshipStrength": "strong",
+      "notes": "Primary operations contact for carrier reviews.",
+      "tags": [
+        "ops",
+        "decision-maker"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    },
+    {
+      "id": "contact_priya_nair",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "firstName": "Priya",
+      "lastName": "Nair",
+      "displayName": "Priya Nair",
+      "email": "priya.nair@northwind.example.com",
+      "phone": "+1-555-111-2223",
+      "jobTitle": "Finance",
+      "department": "Finance",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "PN",
+      "status": "active",
+      "relationshipStrength": "strong",
+      "notes": "Owns the cost model and budget analysis.",
+      "tags": [
+        "finance"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    },
+    {
+      "id": "contact_dana_whitlock",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "firstName": "Dana",
+      "lastName": "Whitlock",
+      "displayName": "Dana Whitlock",
+      "email": "dana.whitlock@northwind.example.com",
+      "phone": "+1-555-111-2224",
+      "jobTitle": "Warehouse",
+      "department": "Operations",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "DW",
+      "status": "active",
+      "relationshipStrength": "medium",
+      "notes": "Warehouse lead for KPI tracking.",
+      "tags": [
+        "warehouse"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    },
+    {
+      "id": "contact_sam_ortiz",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "firstName": "Sam",
+      "lastName": "Ortiz",
+      "displayName": "Sam Ortiz",
+      "email": "sam.ortiz@northwind.example.com",
+      "phone": "+1-555-111-2225",
+      "jobTitle": "Automation",
+      "department": "Operations",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "SO",
+      "status": "active",
+      "relationshipStrength": "medium",
+      "notes": "Supports warehouse automation rollout.",
+      "tags": [
+        "automation"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    },
+    {
+      "id": "contact_elena_park",
+      "workspaceId": "workspace_001",
+      "companyId": "company_atlas",
+      "firstName": "Elena",
+      "lastName": "Park",
+      "displayName": "Elena Park",
+      "email": "elena.park@atlas.example.com",
+      "phone": "+1-555-111-2226",
+      "jobTitle": "Eng lead",
+      "department": "Engineering",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "EP",
+      "status": "active",
+      "relationshipStrength": "strong",
+      "notes": "Engineering owner for the pilot deployment.",
+      "tags": [
+        "engineering"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    },
+    {
+      "id": "contact_toby_grant",
+      "workspaceId": "workspace_001",
+      "companyId": "company_atlas",
+      "firstName": "Toby",
+      "lastName": "Grant",
+      "displayName": "Toby Grant",
+      "email": "toby.grant@atlas.example.com",
+      "phone": "+1-555-111-2227",
+      "jobTitle": "Field tech",
+      "department": "Field Operations",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "TG",
+      "status": "active",
+      "relationshipStrength": "medium",
+      "notes": "Supports field maintenance and issue logging.",
+      "tags": [
+        "field"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    },
+    {
+      "id": "contact_anya_rao",
+      "workspaceId": "workspace_001",
+      "companyId": "company_meridian",
+      "firstName": "Anya",
+      "lastName": "Rao",
+      "displayName": "Dr. Anya Rao",
+      "email": "anya.rao@meridian.example.com",
+      "phone": "+1-555-111-2228",
+      "jobTitle": "Clinical lead",
+      "department": "Clinical",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "AR",
+      "status": "active",
+      "relationshipStrength": "strong",
+      "notes": "Clinical sponsor for onboarding.",
+      "tags": [
+        "clinical"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    },
+    {
+      "id": "contact_liam_foster",
+      "workspaceId": "workspace_001",
+      "companyId": "company_meridian",
+      "firstName": "Liam",
+      "lastName": "Foster",
+      "displayName": "Liam Foster",
+      "email": "liam.foster@meridian.example.com",
+      "phone": "+1-555-111-2229",
+      "jobTitle": "Compliance",
+      "department": "Compliance",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "LF",
+      "status": "active",
+      "relationshipStrength": "strong",
+      "notes": "Handles legal and retention policy checks.",
+      "tags": [
+        "compliance"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    },
+    {
+      "id": "contact_gina_vance",
+      "workspaceId": "workspace_001",
+      "companyId": "company_harbor_vance",
+      "firstName": "Gina",
+      "lastName": "Vance",
+      "displayName": "Gina Vance",
+      "email": "gina.vance@harborvance.example.com",
+      "phone": "+1-555-111-2230",
+      "jobTitle": "Counsel",
+      "department": "Legal",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "GV",
+      "status": "active",
+      "relationshipStrength": "strong",
+      "notes": "Primary external counsel on contract work.",
+      "tags": [
+        "legal"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z"
+    },
+    {
+      "id": "contact_sarah_chen",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "firstName": "Sarah",
+      "lastName": "Chen",
+      "displayName": "Sarah Chen",
+      "email": "sarah@example.com",
+      "phone": "+1-555-111-2231",
+      "jobTitle": "Designer",
+      "department": "Independent",
+      "contactType": "personal",
+      "avatarUrl": null,
+      "initials": "SC",
+      "status": "active",
+      "relationshipStrength": "strong",
+      "notes": "Friend and collaborator on portfolio work.",
+      "tags": [
+        "friend",
+        "design"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z",
+      "showInWorkspaceList": true,
+      "workspaceListOrder": 5,
+      "workspaceLabel": "Designer · Friend"
+    },
+    {
+      "id": "contact_lena_voss",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "firstName": "Lena",
+      "lastName": "Voss",
+      "displayName": "Lena Voss",
+      "email": "lena@vosscapital.example.com",
+      "phone": "+1-555-111-2232",
+      "jobTitle": "Partner, Voss Capital",
+      "department": "Investment",
+      "contactType": "business",
+      "avatarUrl": null,
+      "initials": "LV",
+      "status": "active",
+      "relationshipStrength": "strong",
+      "notes": "Investor contact for fundraising discussions.",
+      "tags": [
+        "investor"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z",
+      "showInWorkspaceList": true,
+      "workspaceListOrder": 6,
+      "workspaceLabel": "Partner, Voss Capital"
+    },
+    {
+      "id": "contact_david_okafor",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "firstName": "David",
+      "lastName": "Okafor",
+      "displayName": "David Okafor",
+      "email": "david@example.com",
+      "phone": "+1-555-111-2233",
+      "jobTitle": "Accountant",
+      "department": "Finance",
+      "contactType": "personal",
+      "avatarUrl": null,
+      "initials": "DO",
+      "status": "active",
+      "relationshipStrength": "strong",
+      "notes": "Personal accountant for tax planning.",
+      "tags": [
+        "accounting"
+      ],
+      "createdAt": "2026-05-01T10:00:00Z",
+      "updatedAt": "2026-06-12T10:00:00Z",
+      "showInWorkspaceList": true,
+      "workspaceListOrder": 7,
+      "workspaceLabel": "Accountant"
+    }
+  ],
+  "meetings": [
+    {
+      "id": "meeting_nw_q2",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "primaryEntityType": "company",
+      "primaryEntityId": "company_northwind",
+      "title": "Q2 Logistics & Carrier Review",
+      "meetingType": "review",
+      "status": "open",
+      "visibility": "private",
+      "date": "2026-06-12",
+      "startTime": "2026-06-12T15:00:00Z",
+      "endTime": "2026-06-12T16:00:00Z",
+      "durationMinutes": 60,
+      "location": {
+        "type": "virtual",
+        "name": "Google Meet",
+        "url": "https://meet.example.com/abc-defg-hij"
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_marcus_reed",
+          "displayName": "Marcus Reed",
+          "email": "marcus.reed@northwind.example.com",
+          "initials": "MR",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_priya_nair",
+          "displayName": "Priya Nair",
+          "email": "priya.nair@northwind.example.com",
+          "initials": "PN",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_dana_whitlock",
+          "displayName": "Dana Whitlock",
+          "email": "dana.whitlock@northwind.example.com",
+          "initials": "DW",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_nw_q2",
+        "meetingId": "meeting_nw_q2",
+        "status": "generated",
+        "summaryText": "We reviewed Q2 carrier performance against the renegotiated SLAs. On-time delivery climbed to 94.2%, but two coastal lanes continued to underperform and are dragging the regional average. The team agreed that consolidating those lanes under a single carrier is the most viable path before peak season.\n\nPriya presented an updated cost model showing a projected 6% freight savings if renewals close before the end of June. Marcus will lead the carrier negotiations, with a revised SLA draft circulating to all parties this week. We close on a decision at the next sync.",
+        "keyPoints": [
+          "On-time delivery improved to 94.2%.",
+          "Two coastal lanes are still underperforming.",
+          "Carrier consolidation is the preferred path before peak season.",
+          "A revised SLA draft needs to circulate this week."
+        ],
+        "decisions": [
+          {
+            "id": "decision_nw_q2_1",
+            "text": "Consolidate the underperforming coastal lanes under one carrier before peak season.",
+            "ownerEntityType": "contact",
+            "ownerEntityId": "contact_marcus_reed",
+            "createdAt": "2026-06-12T16:05:00Z"
+          }
+        ],
+        "risks": [
+          {
+            "id": "risk_nw_q2_1",
+            "text": "The WMS rollout may change KPI baselines and affect July reporting.",
+            "severity": "medium",
+            "ownerEntityType": "contact",
+            "ownerEntityId": "contact_dana_whitlock"
+          }
+        ],
+        "nextSteps": [
+          "Send revised SLA draft to all carriers.",
+          "Finalize carrier contract renewals.",
+          "Flag underperforming coastal lanes for Q3.",
+          "Revisit KPI metrics in July."
+        ],
+        "generatedBy": "seed",
+        "model": "gpt-5.5-thinking",
+        "generatedAt": "2026-06-12T16:06:00Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-06-12T16:10:00Z"
+      },
+      "notes": [
+        {
+          "id": "note_nw_q2_1",
+          "meetingId": "meeting_nw_q2",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Dana flagged that the new WMS rollout may shift KPI baselines and needs a July review.",
+          "createdAt": "2026-06-12T16:02:00Z",
+          "updatedAt": "2026-06-12T16:02:00Z"
+        },
+        {
+          "id": "note_nw_q2_2",
+          "meetingId": "meeting_nw_q2",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Peak-season capacity buffer should be locked by mid-July at the latest.",
+          "createdAt": "2026-06-12T16:03:00Z",
+          "updatedAt": "2026-06-12T16:03:00Z"
+        }
+      ],
+      "transcript": {
+        "id": "transcript_nw_q2",
+        "meetingId": "meeting_nw_q2",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "Dwain Browne: Thanks everyone for joining. Today we are reviewing Q2 carrier performance and open SLA items.\nMarcus Reed: The main concern is the coastal lanes. They are still below the target SLA.\nPriya Nair: If we close renewals by the end of June, the cost model shows about six percent savings.\nDana Whitlock: We should revisit warehouse KPIs in July because the WMS rollout may shift the baseline.",
+        "segments": [
+          {
+            "id": "segment_nw_q2_1",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 0,
+            "endSeconds": 18,
+            "text": "Thanks everyone for joining. Today we are reviewing Q2 carrier performance and open SLA items."
+          },
+          {
+            "id": "segment_nw_q2_2",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_marcus_reed",
+            "speakerName": "Marcus Reed",
+            "startSeconds": 19,
+            "endSeconds": 46,
+            "text": "The main concern is the coastal lanes. They are still below the target SLA."
+          },
+          {
+            "id": "segment_nw_q2_3",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_priya_nair",
+            "speakerName": "Priya Nair",
+            "startSeconds": 47,
+            "endSeconds": 67,
+            "text": "If we close renewals by the end of June, the cost model shows about six percent savings."
+          },
+          {
+            "id": "segment_nw_q2_4",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_dana_whitlock",
+            "speakerName": "Dana Whitlock",
+            "startSeconds": 68,
+            "endSeconds": 92,
+            "text": "We should revisit warehouse KPIs in July because the WMS rollout may shift the baseline."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-06-12T16:00:00Z",
+        "processedAt": "2026-06-12T16:04:00Z"
+      },
+      "attachments": [
+        {
+          "id": "attachment_nw_q2_1",
+          "meetingId": "meeting_nw_q2",
+          "fileName": "q2-carrier-cost-model.pdf",
+          "fileType": "application/pdf",
+          "fileSizeBytes": 1840000,
+          "storageUrl": "https://storage.example.com/files/q2-carrier-cost-model.pdf",
+          "uploadedByUserId": "user_001",
+          "uploadedAt": "2026-06-12T15:58:00Z"
+        }
+      ],
+      "createdAt": "2026-06-12T14:45:00Z",
+      "updatedAt": "2026-06-12T16:10:00Z"
+    },
+    {
+      "id": "meeting_nw_auto",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "primaryEntityType": "company",
+      "primaryEntityId": "company_northwind",
+      "title": "Warehouse Automation Kickoff",
+      "meetingType": "kickoff",
+      "status": "completed",
+      "visibility": "private",
+      "date": "2026-05-04",
+      "startTime": "2026-05-04T15:00:00Z",
+      "endTime": "2026-05-04T16:00:00Z",
+      "durationMinutes": 60,
+      "location": {
+        "type": "virtual",
+        "name": "Zoom",
+        "url": "https://zoom.example.com/meeting"
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_priya_nair",
+          "displayName": "Priya Nair",
+          "email": "priya.nair@northwind.example.com",
+          "initials": "PN",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_sam_ortiz",
+          "displayName": "Sam Ortiz",
+          "email": "sam.ortiz@northwind.example.com",
+          "initials": "SO",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_nw_auto",
+        "meetingId": "meeting_nw_auto",
+        "status": "generated",
+        "summaryText": "Kicked off the automation initiative for the Reno distribution center. Sam walked through three vendor proposals, and the team favored a phased pick-and-pack rollout to limit downtime during the transition.\n\nBudget approval depended on a final ROI memo. Priya committed to model the payback period under conservative throughput assumptions before the team locked a vendor.",
+        "keyPoints": [
+          "Three vendor proposals were reviewed.",
+          "A phased rollout was preferred to reduce downtime.",
+          "Budget approval required a final ROI memo."
+        ],
+        "decisions": [],
+        "risks": [],
+        "nextSteps": [
+          "Shortlist two vendors for on-site demo.",
+          "Draft ROI memo for budget approval.",
+          "Confirm downtime window with operations."
+        ],
+        "generatedBy": "seed",
+        "model": "gpt-5.5-thinking",
+        "generatedAt": "2026-05-04T16:05:00Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-05-04T16:10:00Z"
+      },
+      "notes": [
+        {
+          "id": "note_nw_auto_1",
+          "meetingId": "meeting_nw_auto",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Vendor demos scheduled for the last week of May.",
+          "createdAt": "2026-05-04T16:02:00Z",
+          "updatedAt": "2026-05-04T16:02:00Z"
+        }
+      ],
+      "transcript": {
+        "id": "transcript_nw_auto",
+        "meetingId": "meeting_nw_auto",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "Dwain Browne: We need a kickoff path that limits disruption.\nSam Ortiz: The phased pick-and-pack rollout is the safest proposal.\nPriya Nair: I will model the ROI before we bring the budget request forward.",
+        "segments": [
+          {
+            "id": "segment_nw_auto_1",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 0,
+            "endSeconds": 14,
+            "text": "We need a kickoff path that limits disruption."
+          },
+          {
+            "id": "segment_nw_auto_2",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_sam_ortiz",
+            "speakerName": "Sam Ortiz",
+            "startSeconds": 15,
+            "endSeconds": 33,
+            "text": "The phased pick-and-pack rollout is the safest proposal."
+          },
+          {
+            "id": "segment_nw_auto_3",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_priya_nair",
+            "speakerName": "Priya Nair",
+            "startSeconds": 34,
+            "endSeconds": 50,
+            "text": "I will model the ROI before we bring the budget request forward."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-05-04T15:58:00Z",
+        "processedAt": "2026-05-04T16:03:00Z"
+      },
+      "attachments": [],
+      "createdAt": "2026-05-04T14:45:00Z",
+      "updatedAt": "2026-05-04T16:10:00Z"
+    },
+    {
+      "id": "meeting_nw_renew",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "primaryEntityType": "company",
+      "primaryEntityId": "company_northwind",
+      "title": "Annual Contract Renewal",
+      "meetingType": "renewal",
+      "status": "completed",
+      "visibility": "private",
+      "date": "2026-03-18",
+      "startTime": "2026-03-18T15:00:00Z",
+      "endTime": "2026-03-18T15:30:00Z",
+      "durationMinutes": 30,
+      "location": {
+        "type": "virtual",
+        "name": "Phone",
+        "url": null
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_marcus_reed",
+          "displayName": "Marcus Reed",
+          "email": "marcus.reed@northwind.example.com",
+          "initials": "MR",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_nw_renew",
+        "meetingId": "meeting_nw_renew",
+        "status": "generated",
+        "summaryText": "The annual master services agreement was renewed for another 24-month term. Pricing held flat, with an added volume-discount tier above 10,000 units per quarter.\n\nLegal redlines were minor and resolved on the call. Signed copies were scheduled to follow immediately after the meeting.",
+        "keyPoints": [
+          "The MSA was renewed for 24 months.",
+          "Pricing remained flat.",
+          "A new volume-discount tier was added."
+        ],
+        "decisions": [],
+        "risks": [],
+        "nextSteps": [
+          "Countersign and file the renewed MSA.",
+          "Update CRM with new contract terms."
+        ],
+        "generatedBy": "seed",
+        "model": "gpt-5.5-thinking",
+        "generatedAt": "2026-03-18T15:40:00Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-03-18T15:45:00Z"
+      },
+      "notes": [
+        {
+          "id": "note_nw_renew_1",
+          "meetingId": "meeting_nw_renew",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Volume tier kicks in automatically once the threshold is hit and no amendment is needed.",
+          "createdAt": "2026-03-18T15:33:00Z",
+          "updatedAt": "2026-03-18T15:33:00Z"
+        }
+      ],
+      "transcript": {
+        "id": "transcript_nw_renew",
+        "meetingId": "meeting_nw_renew",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "Dwain Browne: We can proceed with the existing price sheet if the new volume tier stays in the agreement.\nMarcus Reed: That works for us and the countersigned copy will go out today.",
+        "segments": [
+          {
+            "id": "segment_nw_renew_1",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 0,
+            "endSeconds": 14,
+            "text": "We can proceed with the existing price sheet if the new volume tier stays in the agreement."
+          },
+          {
+            "id": "segment_nw_renew_2",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_marcus_reed",
+            "speakerName": "Marcus Reed",
+            "startSeconds": 15,
+            "endSeconds": 31,
+            "text": "That works for us and the countersigned copy will go out today."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-03-18T15:20:00Z",
+        "processedAt": "2026-03-18T15:31:00Z"
+      },
+      "attachments": [],
+      "createdAt": "2026-03-18T14:50:00Z",
+      "updatedAt": "2026-03-18T15:45:00Z"
+    },
+    {
+      "id": "meeting_at_pilot",
+      "workspaceId": "workspace_001",
+      "companyId": "company_atlas",
+      "primaryEntityType": "company",
+      "primaryEntityId": "company_atlas",
+      "title": "Pilot Deployment Sync",
+      "meetingType": "review",
+      "status": "open",
+      "visibility": "private",
+      "date": "2026-06-09",
+      "startTime": "2026-06-09T15:00:00Z",
+      "endTime": "2026-06-09T16:00:00Z",
+      "durationMinutes": 60,
+      "location": {
+        "type": "virtual",
+        "name": "Google Meet",
+        "url": "https://meet.example.com/atlas-pilot"
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_elena_park",
+          "displayName": "Elena Park",
+          "email": "elena.park@atlas.example.com",
+          "initials": "EP",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_toby_grant",
+          "displayName": "Toby Grant",
+          "email": "toby.grant@atlas.example.com",
+          "initials": "TG",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_at_pilot",
+        "meetingId": "meeting_at_pilot",
+        "status": "generated",
+        "summaryText": "The pilot cell had been running for three weeks with throughput beating the baseline by eleven percent. Two intermittent sensor faults were traced to firmware and patched mid-week.\n\nElena recommended extending the pilot by two weeks before a go or no-go decision so the team could capture a full maintenance cycle.",
+        "keyPoints": [
+          "Pilot throughput exceeded baseline by 11%.",
+          "Two sensor faults were fixed with a firmware patch.",
+          "Elena recommended a two-week extension."
+        ],
+        "decisions": [],
+        "risks": [],
+        "nextSteps": [
+          "Extend pilot window and document maintenance cycle.",
+          "Prepare go/no-go decision deck.",
+          "Log sensor fault root-cause report."
+        ],
+        "generatedBy": "seed",
+        "model": "gpt-5.5-thinking",
+        "generatedAt": "2026-06-09T16:05:00Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-06-09T16:09:00Z"
+      },
+      "notes": [
+        {
+          "id": "note_at_pilot_1",
+          "meetingId": "meeting_at_pilot",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Firmware v2.4 resolved the sensor dropouts and should be monitored through the next cycle.",
+          "createdAt": "2026-06-09T16:00:00Z",
+          "updatedAt": "2026-06-09T16:00:00Z"
+        }
+      ],
+      "transcript": {
+        "id": "transcript_at_pilot",
+        "meetingId": "meeting_at_pilot",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "Dwain Browne: The pilot is outperforming the baseline and the line looks stable.\nElena Park: I want two more weeks before a final go or no-go call so we can capture the maintenance cycle.\nToby Grant: The sensor faults were firmware related and the latest patch resolved them.",
+        "segments": [
+          {
+            "id": "segment_at_pilot_1",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 0,
+            "endSeconds": 15,
+            "text": "The pilot is outperforming the baseline and the line looks stable."
+          },
+          {
+            "id": "segment_at_pilot_2",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_elena_park",
+            "speakerName": "Elena Park",
+            "startSeconds": 16,
+            "endSeconds": 36,
+            "text": "I want two more weeks before a final go or no-go call so we can capture the maintenance cycle."
+          },
+          {
+            "id": "segment_at_pilot_3",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_toby_grant",
+            "speakerName": "Toby Grant",
+            "startSeconds": 37,
+            "endSeconds": 55,
+            "text": "The sensor faults were firmware related and the latest patch resolved them."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-06-09T15:58:00Z",
+        "processedAt": "2026-06-09T16:03:00Z"
+      },
+      "attachments": [],
+      "createdAt": "2026-06-09T14:45:00Z",
+      "updatedAt": "2026-06-09T16:09:00Z"
+    },
+    {
+      "id": "meeting_at_plan",
+      "workspaceId": "workspace_001",
+      "companyId": "company_atlas",
+      "primaryEntityType": "company",
+      "primaryEntityId": "company_atlas",
+      "title": "Integration Planning",
+      "meetingType": "planning",
+      "status": "completed",
+      "visibility": "private",
+      "date": "2026-04-22",
+      "startTime": "2026-04-22T15:00:00Z",
+      "endTime": "2026-04-22T15:45:00Z",
+      "durationMinutes": 45,
+      "location": {
+        "type": "virtual",
+        "name": "Google Meet",
+        "url": null
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_elena_park",
+          "displayName": "Elena Park",
+          "email": "elena.park@atlas.example.com",
+          "initials": "EP",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_at_plan",
+        "meetingId": "meeting_at_plan",
+        "status": "generated",
+        "summaryText": "The team mapped the integration points between the robotics control layer and the existing MES. The API gateway was identified as the critical dependency.\n\nA staging environment would be stood up before any production wiring was attempted.",
+        "keyPoints": [
+          "Integration points were mapped.",
+          "The API gateway is the main dependency.",
+          "A staging environment is required before production work."
+        ],
+        "decisions": [],
+        "risks": [],
+        "nextSteps": [
+          "Provision staging environment.",
+          "Share MES API documentation."
+        ],
+        "generatedBy": "seed",
+        "model": "gpt-5.5-thinking",
+        "generatedAt": "2026-04-22T15:48:00Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-04-22T15:50:00Z"
+      },
+      "notes": [],
+      "transcript": {
+        "id": "transcript_at_plan",
+        "meetingId": "meeting_at_plan",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "Dwain Browne: The MES API gateway is the dependency we need to unblock first.\nElena Park: I will provision a staging environment before we wire anything to production.",
+        "segments": [
+          {
+            "id": "segment_at_plan_1",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 0,
+            "endSeconds": 17,
+            "text": "The MES API gateway is the dependency we need to unblock first."
+          },
+          {
+            "id": "segment_at_plan_2",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_elena_park",
+            "speakerName": "Elena Park",
+            "startSeconds": 18,
+            "endSeconds": 34,
+            "text": "I will provision a staging environment before we wire anything to production."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-04-22T15:30:00Z",
+        "processedAt": "2026-04-22T15:38:00Z"
+      },
+      "attachments": [],
+      "createdAt": "2026-04-22T14:50:00Z",
+      "updatedAt": "2026-04-22T15:50:00Z"
+    },
+    {
+      "id": "meeting_me_comp",
+      "workspaceId": "workspace_001",
+      "companyId": "company_meridian",
+      "primaryEntityType": "company",
+      "primaryEntityId": "company_meridian",
+      "title": "Compliance & Onboarding",
+      "meetingType": "onboarding",
+      "status": "open",
+      "visibility": "private",
+      "date": "2026-05-28",
+      "startTime": "2026-05-28T15:00:00Z",
+      "endTime": "2026-05-28T16:00:00Z",
+      "durationMinutes": 60,
+      "location": {
+        "type": "virtual",
+        "name": "Google Meet",
+        "url": "https://meet.example.com/meridian"
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_anya_rao",
+          "displayName": "Dr. Anya Rao",
+          "email": "anya.rao@meridian.example.com",
+          "initials": "AR",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_liam_foster",
+          "displayName": "Liam Foster",
+          "email": "liam.foster@meridian.example.com",
+          "initials": "LF",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_me_comp",
+        "meetingId": "meeting_me_comp",
+        "status": "generated",
+        "summaryText": "Go-live target is mid-June pending retention sign-off. Dwain Browne: All data handling needs to stay inside the audited environment.\n\nFollow-up is centered on Confirm data retention policy with legal and Provision role-scoped access for clinical staff. 2 action items remain open.",
+        "keyPoints": [
+          "Go-live target is mid-June pending retention sign-off.",
+          "Dwain Browne: All data handling needs to stay inside the audited environment.",
+          "Liam Foster: I still need legal to confirm the exact retention window before we can clear go-live.",
+          "Dr."
+        ],
+        "decisions": [
+          {
+            "id": "decision_meeting_me_comp_1",
+            "text": "Track Confirm data retention policy with legal as the top next step.",
+            "ownerEntityType": "user",
+            "ownerEntityId": "user_001",
+            "createdAt": "2026-06-19T20:17:51.812Z"
+          }
+        ],
+        "risks": [
+          {
+            "id": "risk_me_comp_1",
+            "text": "Go-live depends on retention policy sign-off.",
+            "severity": "medium",
+            "ownerEntityType": "contact",
+            "ownerEntityId": "contact_liam_foster"
+          }
+        ],
+        "nextSteps": [
+          "Confirm data retention policy with legal",
+          "Provision role-scoped access for clinical staff"
+        ],
+        "generatedBy": "ai",
+        "model": "local-prototype-ai",
+        "generatedAt": "2026-06-19T20:17:51.812Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-06-19T20:17:51.812Z"
+      },
+      "notes": [
+        {
+          "id": "note_me_comp_1",
+          "meetingId": "meeting_me_comp",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Go-live target is mid-June pending retention sign-off.",
+          "createdAt": "2026-05-28T16:01:00Z",
+          "updatedAt": "2026-05-28T16:01:00Z"
+        }
+      ],
+      "transcript": {
+        "id": "transcript_me_comp",
+        "meetingId": "meeting_me_comp",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "Dwain Browne: All data handling needs to stay inside the audited environment.\nLiam Foster: I still need legal to confirm the exact retention window before we can clear go-live.\nDr. Anya Rao: The clinical team can move once access is properly scoped.",
+        "segments": [
+          {
+            "id": "segment_me_comp_1",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 0,
+            "endSeconds": 15,
+            "text": "All data handling needs to stay inside the audited environment."
+          },
+          {
+            "id": "segment_me_comp_2",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_liam_foster",
+            "speakerName": "Liam Foster",
+            "startSeconds": 16,
+            "endSeconds": 35,
+            "text": "I still need legal to confirm the exact retention window before we can clear go-live."
+          },
+          {
+            "id": "segment_me_comp_3",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_anya_rao",
+            "speakerName": "Dr. Anya Rao",
+            "startSeconds": 36,
+            "endSeconds": 51,
+            "text": "The clinical team can move once access is properly scoped."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-05-28T15:55:00Z",
+        "processedAt": "2026-05-28T16:03:00Z"
+      },
+      "attachments": [],
+      "createdAt": "2026-05-28T14:45:00Z",
+      "updatedAt": "2026-06-19T20:17:51.812Z"
+    },
+    {
+      "id": "meeting_hv_red",
+      "workspaceId": "workspace_001",
+      "companyId": "company_harbor_vance",
+      "primaryEntityType": "company",
+      "primaryEntityId": "company_harbor_vance",
+      "title": "Contract Red-lines",
+      "meetingType": "legal",
+      "status": "open",
+      "visibility": "private",
+      "date": "2026-06-02",
+      "startTime": "2026-06-02T15:00:00Z",
+      "endTime": "2026-06-02T15:45:00Z",
+      "durationMinutes": 45,
+      "location": {
+        "type": "virtual",
+        "name": "Google Meet",
+        "url": "https://meet.example.com/legal"
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_gina_vance",
+          "displayName": "Gina Vance",
+          "email": "gina.vance@harborvance.example.com",
+          "initials": "GV",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_hv_red",
+        "meetingId": "meeting_hv_red",
+        "status": "generated",
+        "summaryText": "Gina's redlines on the partnership agreement were reviewed. The indemnification clause and the termination-for-convenience window were the two open items.\n\nAlignment was reached on indemnification. The termination window remained open pending business input.",
+        "keyPoints": [
+          "Two legal items were open.",
+          "Indemnification reached alignment.",
+          "Termination window still needs business sign-off."
+        ],
+        "decisions": [],
+        "risks": [],
+        "nextSteps": [
+          "Send revised indemnification language.",
+          "Get business sign-off on the termination window."
+        ],
+        "generatedBy": "seed",
+        "model": "gpt-5.5-thinking",
+        "generatedAt": "2026-06-02T15:50:00Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-06-02T15:55:00Z"
+      },
+      "notes": [
+        {
+          "id": "note_hv_red_1",
+          "meetingId": "meeting_hv_red",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Aim to close all redlines before the end of the month.",
+          "createdAt": "2026-06-02T15:46:00Z",
+          "updatedAt": "2026-06-02T15:46:00Z"
+        }
+      ],
+      "transcript": {
+        "id": "transcript_hv_red",
+        "meetingId": "meeting_hv_red",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "Dwain Browne: We are aligned on indemnification, but the termination window still needs business review.\nGina Vance: I will send the revised indemnification language after this call.",
+        "segments": [
+          {
+            "id": "segment_hv_red_1",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 0,
+            "endSeconds": 17,
+            "text": "We are aligned on indemnification, but the termination window still needs business review."
+          },
+          {
+            "id": "segment_hv_red_2",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_gina_vance",
+            "speakerName": "Gina Vance",
+            "startSeconds": 18,
+            "endSeconds": 33,
+            "text": "I will send the revised indemnification language after this call."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-06-02T15:30:00Z",
+        "processedAt": "2026-06-02T15:40:00Z"
+      },
+      "attachments": [],
+      "createdAt": "2026-06-02T14:45:00Z",
+      "updatedAt": "2026-06-02T15:55:00Z"
+    },
+    {
+      "id": "meeting_sc_port",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "primaryEntityType": "contact",
+      "primaryEntityId": "contact_sarah_chen",
+      "title": "Portfolio Site Brainstorm",
+      "meetingType": "brainstorm",
+      "status": "open",
+      "visibility": "private",
+      "date": "2026-06-07",
+      "startTime": "2026-06-07T15:00:00Z",
+      "endTime": "2026-06-07T16:00:00Z",
+      "durationMinutes": 60,
+      "location": {
+        "type": "in-person",
+        "name": "Coffee shop",
+        "url": null
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_sarah_chen",
+          "displayName": "Sarah Chen",
+          "email": "sarah@example.com",
+          "initials": "SC",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_sc_port",
+        "meetingId": "meeting_sc_port",
+        "status": "generated",
+        "summaryText": "Sarah leaned toward an editorial, type-forward direction for her new portfolio rather than a grid of thumbnails. The rough structure was a quiet landing, three flagship case studies, and a short about page.\n\nThe immediate next step was gathering the case-study assets and references before design started.",
+        "keyPoints": [
+          "Editorial and type-forward direction won out.",
+          "Three flagship case studies are the core structure.",
+          "Case-study assets still need to be gathered."
+        ],
+        "decisions": [],
+        "risks": [],
+        "nextSteps": [
+          "Gather case-study screenshots and write-ups.",
+          "Send over the layout references that landed well."
+        ],
+        "generatedBy": "seed",
+        "model": "gpt-5.5-thinking",
+        "generatedAt": "2026-06-07T16:05:00Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-06-07T16:10:00Z"
+      },
+      "notes": [
+        {
+          "id": "note_sc_port_1",
+          "meetingId": "meeting_sc_port",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Sarah loves clean, type-forward layouts and wants the site to stay understated.",
+          "createdAt": "2026-06-07T16:02:00Z",
+          "updatedAt": "2026-06-07T16:02:00Z"
+        }
+      ],
+      "transcript": {
+        "id": "transcript_sc_port",
+        "meetingId": "meeting_sc_port",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "Sarah Chen: I want the site to feel editorial and quiet rather than like a gallery wall.\nDwain Browne: Then we should anchor the structure around three case studies and a restrained landing page.",
+        "segments": [
+          {
+            "id": "segment_sc_port_1",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_sarah_chen",
+            "speakerName": "Sarah Chen",
+            "startSeconds": 0,
+            "endSeconds": 17,
+            "text": "I want the site to feel editorial and quiet rather than like a gallery wall."
+          },
+          {
+            "id": "segment_sc_port_2",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 18,
+            "endSeconds": 34,
+            "text": "Then we should anchor the structure around three case studies and a restrained landing page."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-06-07T15:50:00Z",
+        "processedAt": "2026-06-07T16:01:00Z"
+      },
+      "attachments": [],
+      "createdAt": "2026-06-07T14:50:00Z",
+      "updatedAt": "2026-06-07T16:10:00Z"
+    },
+    {
+      "id": "meeting_lv_seed",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "primaryEntityType": "contact",
+      "primaryEntityId": "contact_lena_voss",
+      "title": "Seed Round Discussion",
+      "meetingType": "fundraising",
+      "status": "open",
+      "visibility": "private",
+      "date": "2026-06-10",
+      "startTime": "2026-06-10T15:00:00Z",
+      "endTime": "2026-06-10T15:45:00Z",
+      "durationMinutes": 45,
+      "location": {
+        "type": "virtual",
+        "name": "Zoom",
+        "url": "https://zoom.example.com/fundraise"
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_lena_voss",
+          "displayName": "Lena Voss",
+          "email": "lena@vosscapital.example.com",
+          "initials": "LV",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_lv_seed",
+        "meetingId": "meeting_lv_seed",
+        "status": "generated",
+        "summaryText": "Lena reacted positively to the traction numbers and asked for a closer look at retention cohorts and burn. She would like an updated data room before taking the opportunity to her partners.\n\nThere was no commitment yet, but the conversation clearly left the door open for a next step.",
+        "keyPoints": [
+          "Traction was well received.",
+          "Retention cohorts and burn need a sharper readout.",
+          "The data room needs an update before partner review."
+        ],
+        "decisions": [],
+        "risks": [],
+        "nextSteps": [
+          "Refresh the data room with Q2 cohorts and burn.",
+          "Circulate the teaser to the investment committee."
+        ],
+        "generatedBy": "seed",
+        "model": "gpt-5.5-thinking",
+        "generatedAt": "2026-06-10T15:50:00Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-06-10T15:55:00Z"
+      },
+      "notes": [
+        {
+          "id": "note_lv_seed_1",
+          "meetingId": "meeting_lv_seed",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Lena prefers concise decks and wants the cohort chart front and center.",
+          "createdAt": "2026-06-10T15:47:00Z",
+          "updatedAt": "2026-06-10T15:47:00Z"
+        }
+      ],
+      "transcript": {
+        "id": "transcript_lv_seed",
+        "meetingId": "meeting_lv_seed",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "Lena Voss: The traction numbers are strong, but I need a closer look at retention cohorts and burn.\nDwain Browne: I can refresh the data room this week and send a tighter deck with the cohort chart up front.",
+        "segments": [
+          {
+            "id": "segment_lv_seed_1",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_lena_voss",
+            "speakerName": "Lena Voss",
+            "startSeconds": 0,
+            "endSeconds": 18,
+            "text": "The traction numbers are strong, but I need a closer look at retention cohorts and burn."
+          },
+          {
+            "id": "segment_lv_seed_2",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 19,
+            "endSeconds": 36,
+            "text": "I can refresh the data room this week and send a tighter deck with the cohort chart up front."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-06-10T15:40:00Z",
+        "processedAt": "2026-06-10T15:48:00Z"
+      },
+      "attachments": [],
+      "createdAt": "2026-06-10T14:50:00Z",
+      "updatedAt": "2026-06-10T15:55:00Z"
+    },
+    {
+      "id": "meeting_do_tax",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "primaryEntityType": "contact",
+      "primaryEntityId": "contact_david_okafor",
+      "title": "Tax Planning 2026",
+      "meetingType": "planning",
+      "status": "completed",
+      "visibility": "private",
+      "date": "2026-04-15",
+      "startTime": "2026-04-15T15:00:00Z",
+      "endTime": "2026-04-15T15:45:00Z",
+      "durationMinutes": 45,
+      "location": {
+        "type": "virtual",
+        "name": "Phone",
+        "url": null
+      },
+      "organizerUserId": "user_001",
+      "attendees": [
+        {
+          "entityType": "user",
+          "entityId": "user_001",
+          "displayName": "Dwain Browne",
+          "email": "dwain@example.com",
+          "initials": "DB",
+          "attendanceStatus": "attended",
+          "role": "owner"
+        },
+        {
+          "entityType": "contact",
+          "entityId": "contact_david_okafor",
+          "displayName": "David Okafor",
+          "email": "david@example.com",
+          "initials": "DO",
+          "attendanceStatus": "attended",
+          "role": "participant"
+        }
+      ],
+      "summary": {
+        "id": "summary_do_tax",
+        "meetingId": "meeting_do_tax",
+        "status": "generated",
+        "summaryText": "Estimated quarterly payments and a few deduction opportunities were reviewed. The home-office and equipment write-offs stood out as the cleanest wins for the year.\n\nRecords were mostly in good shape, with just a few receipts missing before the next filing.",
+        "keyPoints": [
+          "Quarterly payments were reviewed.",
+          "Home-office and equipment write-offs remain useful deductions.",
+          "A few receipts still need to be uploaded."
+        ],
+        "decisions": [],
+        "risks": [],
+        "nextSteps": [
+          "Upload outstanding equipment receipts.",
+          "File the Q2 estimated payment."
+        ],
+        "generatedBy": "seed",
+        "model": "gpt-5.5-thinking",
+        "generatedAt": "2026-04-15T15:50:00Z",
+        "lastReviewedByUserId": "user_001",
+        "lastReviewedAt": "2026-04-15T15:53:00Z"
+      },
+      "notes": [
+        {
+          "id": "note_do_tax_1",
+          "meetingId": "meeting_do_tax",
+          "authorUserId": "user_001",
+          "noteType": "manual",
+          "content": "Keep equipment receipts in the shared folder going forward.",
+          "createdAt": "2026-04-15T15:46:00Z",
+          "updatedAt": "2026-04-15T15:46:00Z"
+        }
+      ],
+      "transcript": {
+        "id": "transcript_do_tax",
+        "meetingId": "meeting_do_tax",
+        "status": "processed",
+        "sourceType": "seed",
+        "language": "en",
+        "fullText": "David Okafor: The cleanest deduction wins are the home office and equipment purchases.\nDwain Browne: I still need to upload a few receipts before the next filing.",
+        "segments": [
+          {
+            "id": "segment_do_tax_1",
+            "speakerEntityType": "contact",
+            "speakerEntityId": "contact_david_okafor",
+            "speakerName": "David Okafor",
+            "startSeconds": 0,
+            "endSeconds": 15,
+            "text": "The cleanest deduction wins are the home office and equipment purchases."
+          },
+          {
+            "id": "segment_do_tax_2",
+            "speakerEntityType": "user",
+            "speakerEntityId": "user_001",
+            "speakerName": "Dwain Browne",
+            "startSeconds": 16,
+            "endSeconds": 30,
+            "text": "I still need to upload a few receipts before the next filing."
+          }
+        ],
+        "uploadedByUserId": "user_001",
+        "uploadedAt": "2026-04-15T15:35:00Z",
+        "processedAt": "2026-04-15T15:44:00Z"
+      },
+      "attachments": [],
+      "createdAt": "2026-04-15T14:50:00Z",
+      "updatedAt": "2026-04-15T15:53:00Z"
+    }
+  ],
+  "actionItems": [
+    {
+      "id": "action_nw_q2_1",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_q2",
+      "title": "Send revised SLA draft to all carriers",
+      "description": "Send the updated SLA draft to all carrier partners for review.",
+      "status": "open",
+      "priority": "high",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-24",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "ai-extracted",
+        "meetingId": "meeting_nw_q2",
+        "transcriptSegmentIds": [
+          "segment_nw_q2_1",
+          "segment_nw_q2_2"
+        ],
+        "confidenceScore": 0.92
+      },
+      "tags": [
+        "sla",
+        "carrier-review"
+      ],
+      "createdAt": "2026-06-12T16:06:00Z",
+      "updatedAt": "2026-06-12T16:06:00Z"
+    },
+    {
+      "id": "action_nw_q2_2",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_q2",
+      "title": "Finalize carrier contract renewals",
+      "description": "Close the active carrier renewals before the end of June.",
+      "status": "open",
+      "priority": "high",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_marcus_reed",
+        "displayName": "Marcus Reed",
+        "initials": "MR"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-27",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_nw_q2",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "renewals"
+      ],
+      "createdAt": "2026-06-12T16:06:00Z",
+      "updatedAt": "2026-06-12T16:06:00Z"
+    },
+    {
+      "id": "action_nw_q2_3",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_q2",
+      "title": "Flag underperforming coastal lanes for Q3",
+      "description": "Track the underperforming coastal lanes inside the Q3 review plan.",
+      "status": "open",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_marcus_reed",
+        "displayName": "Marcus Reed",
+        "initials": "MR"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-16",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "manual",
+        "meetingId": "meeting_nw_q2",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "q3",
+        "lane-performance"
+      ],
+      "createdAt": "2026-06-12T16:06:00Z",
+      "updatedAt": "2026-06-17T09:00:00Z"
+    },
+    {
+      "id": "action_nw_q2_4",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_q2",
+      "title": "Share updated freight cost model",
+      "description": "Distribute the latest freight cost model to the working group.",
+      "status": "completed",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_priya_nair",
+        "displayName": "Priya Nair",
+        "initials": "PN"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-06-13T13:00:00Z",
+      "completedByEntityId": "contact_priya_nair",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_nw_q2",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "finance"
+      ],
+      "createdAt": "2026-06-12T16:06:00Z",
+      "updatedAt": "2026-06-13T13:00:00Z"
+    },
+    {
+      "id": "action_nw_q2_5",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_q2",
+      "title": "Circulate latest warehouse KPIs",
+      "description": "Send the warehouse KPI pack for follow-up review.",
+      "status": "completed",
+      "priority": "low",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_dana_whitlock",
+        "displayName": "Dana Whitlock",
+        "initials": "DW"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-06-13T11:00:00Z",
+      "completedByEntityId": "contact_dana_whitlock",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_nw_q2",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "warehouse",
+        "kpi"
+      ],
+      "createdAt": "2026-06-12T16:06:00Z",
+      "updatedAt": "2026-06-13T11:00:00Z"
+    },
+    {
+      "id": "action_nw_auto_1",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_auto",
+      "title": "Shortlist two vendors for on-site demo",
+      "description": "Reduce the vendor list to the top two candidates.",
+      "status": "completed",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_sam_ortiz",
+        "displayName": "Sam Ortiz",
+        "initials": "SO"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-05-22",
+      "completedAt": "2026-05-21T12:00:00Z",
+      "completedByEntityId": "contact_sam_ortiz",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_nw_auto",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "automation",
+        "vendors"
+      ],
+      "createdAt": "2026-05-04T16:06:00Z",
+      "updatedAt": "2026-05-21T12:00:00Z"
+    },
+    {
+      "id": "action_nw_auto_2",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_auto",
+      "title": "Draft ROI memo for budget approval",
+      "description": "Prepare the ROI memo to support the budget request.",
+      "status": "completed",
+      "priority": "high",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_priya_nair",
+        "displayName": "Priya Nair",
+        "initials": "PN"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-05-30",
+      "completedAt": "2026-05-28T14:00:00Z",
+      "completedByEntityId": "contact_priya_nair",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_nw_auto",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "roi",
+        "budget"
+      ],
+      "createdAt": "2026-05-04T16:06:00Z",
+      "updatedAt": "2026-05-28T14:00:00Z"
+    },
+    {
+      "id": "action_nw_auto_3",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_auto",
+      "title": "Confirm downtime window with operations",
+      "description": "Confirm the acceptable downtime window for rollout.",
+      "status": "completed",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-05-28",
+      "completedAt": "2026-05-27T12:00:00Z",
+      "completedByEntityId": "user_001",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_nw_auto",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "operations"
+      ],
+      "createdAt": "2026-05-04T16:06:00Z",
+      "updatedAt": "2026-05-27T12:00:00Z"
+    },
+    {
+      "id": "action_nw_renew_1",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_renew",
+      "title": "Countersign and file the renewed MSA",
+      "description": "Send the final countersigned MSA and file it internally.",
+      "status": "completed",
+      "priority": "high",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_marcus_reed",
+        "displayName": "Marcus Reed",
+        "initials": "MR"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-03-18T16:15:00Z",
+      "completedByEntityId": "contact_marcus_reed",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_nw_renew",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "msa"
+      ],
+      "createdAt": "2026-03-18T15:35:00Z",
+      "updatedAt": "2026-03-18T16:15:00Z"
+    },
+    {
+      "id": "action_nw_renew_2",
+      "workspaceId": "workspace_001",
+      "companyId": "company_northwind",
+      "meetingId": "meeting_nw_renew",
+      "title": "Update CRM with new contract terms",
+      "description": "Record the updated contract term in CRM.",
+      "status": "completed",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-03-19T12:00:00Z",
+      "completedByEntityId": "user_001",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_nw_renew",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "crm"
+      ],
+      "createdAt": "2026-03-18T15:35:00Z",
+      "updatedAt": "2026-03-19T12:00:00Z"
+    },
+    {
+      "id": "action_at_pilot_1",
+      "workspaceId": "workspace_001",
+      "companyId": "company_atlas",
+      "meetingId": "meeting_at_pilot",
+      "title": "Extend pilot window and document maintenance cycle",
+      "description": "Extend the pilot by two weeks and capture the maintenance cycle.",
+      "status": "open",
+      "priority": "high",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_elena_park",
+        "displayName": "Elena Park",
+        "initials": "EP"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-23",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_at_pilot",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "pilot"
+      ],
+      "createdAt": "2026-06-09T16:06:00Z",
+      "updatedAt": "2026-06-09T16:06:00Z"
+    },
+    {
+      "id": "action_at_pilot_2",
+      "workspaceId": "workspace_001",
+      "companyId": "company_atlas",
+      "meetingId": "meeting_at_pilot",
+      "title": "Prepare go/no-go decision deck",
+      "description": "Prepare the final pilot decision deck.",
+      "status": "open",
+      "priority": "high",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-25",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_at_pilot",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "deck"
+      ],
+      "createdAt": "2026-06-09T16:06:00Z",
+      "updatedAt": "2026-06-09T16:06:00Z"
+    },
+    {
+      "id": "action_at_pilot_3",
+      "workspaceId": "workspace_001",
+      "companyId": "company_atlas",
+      "meetingId": "meeting_at_pilot",
+      "title": "Log sensor fault root-cause report",
+      "description": "Capture the root-cause report for the resolved sensor fault.",
+      "status": "completed",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_toby_grant",
+        "displayName": "Toby Grant",
+        "initials": "TG"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-06-10T11:00:00Z",
+      "completedByEntityId": "contact_toby_grant",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_at_pilot",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "firmware"
+      ],
+      "createdAt": "2026-06-09T16:06:00Z",
+      "updatedAt": "2026-06-10T11:00:00Z"
+    },
+    {
+      "id": "action_at_plan_1",
+      "workspaceId": "workspace_001",
+      "companyId": "company_atlas",
+      "meetingId": "meeting_at_plan",
+      "title": "Provision staging environment",
+      "description": "Create the staging environment before production wiring.",
+      "status": "completed",
+      "priority": "high",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_elena_park",
+        "displayName": "Elena Park",
+        "initials": "EP"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-04-26T12:00:00Z",
+      "completedByEntityId": "contact_elena_park",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_at_plan",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "staging"
+      ],
+      "createdAt": "2026-04-22T15:40:00Z",
+      "updatedAt": "2026-04-26T12:00:00Z"
+    },
+    {
+      "id": "action_at_plan_2",
+      "workspaceId": "workspace_001",
+      "companyId": "company_atlas",
+      "meetingId": "meeting_at_plan",
+      "title": "Share MES API documentation",
+      "description": "Send the existing MES API documentation to Atlas.",
+      "status": "completed",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-04-23T12:00:00Z",
+      "completedByEntityId": "user_001",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_at_plan",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "api"
+      ],
+      "createdAt": "2026-04-22T15:40:00Z",
+      "updatedAt": "2026-04-23T12:00:00Z"
+    },
+    {
+      "id": "action_me_comp_1",
+      "workspaceId": "workspace_001",
+      "companyId": "company_meridian",
+      "meetingId": "meeting_me_comp",
+      "title": "Confirm data retention policy with legal",
+      "description": "Close the open retention policy question with legal.",
+      "status": "open",
+      "priority": "high",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_liam_foster",
+        "displayName": "Liam Foster",
+        "initials": "LF"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-20",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_me_comp",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "legal",
+        "retention"
+      ],
+      "createdAt": "2026-05-28T16:06:00Z",
+      "updatedAt": "2026-05-28T16:06:00Z"
+    },
+    {
+      "id": "action_me_comp_2",
+      "workspaceId": "workspace_001",
+      "companyId": "company_meridian",
+      "meetingId": "meeting_me_comp",
+      "title": "Provision role-scoped access for clinical staff",
+      "description": "Set up role-scoped access before onboarding starts.",
+      "status": "open",
+      "priority": "high",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-18",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_me_comp",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "access"
+      ],
+      "createdAt": "2026-05-28T16:06:00Z",
+      "updatedAt": "2026-05-28T16:06:00Z"
+    },
+    {
+      "id": "action_me_comp_3",
+      "workspaceId": "workspace_001",
+      "companyId": "company_meridian",
+      "meetingId": "meeting_me_comp",
+      "title": "Approve onboarding training schedule",
+      "description": "Confirm the onboarding training schedule with clinical staff.",
+      "status": "completed",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_anya_rao",
+        "displayName": "Dr. Anya Rao",
+        "initials": "AR"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-05-30T12:00:00Z",
+      "completedByEntityId": "contact_anya_rao",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_me_comp",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "training"
+      ],
+      "createdAt": "2026-05-28T16:06:00Z",
+      "updatedAt": "2026-05-30T12:00:00Z"
+    },
+    {
+      "id": "action_hv_red_1",
+      "workspaceId": "workspace_001",
+      "companyId": "company_harbor_vance",
+      "meetingId": "meeting_hv_red",
+      "title": "Send revised indemnification language",
+      "description": "Send the updated indemnification clause for the agreement.",
+      "status": "open",
+      "priority": "high",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_gina_vance",
+        "displayName": "Gina Vance",
+        "initials": "GV"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-21",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_hv_red",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "legal"
+      ],
+      "createdAt": "2026-06-02T15:46:00Z",
+      "updatedAt": "2026-06-02T15:46:00Z"
+    },
+    {
+      "id": "action_hv_red_2",
+      "workspaceId": "workspace_001",
+      "companyId": "company_harbor_vance",
+      "meetingId": "meeting_hv_red",
+      "title": "Get business sign-off on termination window",
+      "description": "Get internal sign-off on the termination-for-convenience window.",
+      "status": "open",
+      "priority": "high",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-19",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_hv_red",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "approval"
+      ],
+      "createdAt": "2026-06-02T15:46:00Z",
+      "updatedAt": "2026-06-02T15:46:00Z"
+    },
+    {
+      "id": "action_sc_port_1",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "meetingId": "meeting_sc_port",
+      "title": "Gather case-study screenshots and write-ups",
+      "description": "Collect the case-study material for the new portfolio site.",
+      "status": "open",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_sarah_chen",
+        "displayName": "Sarah Chen",
+        "initials": "SC"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-28",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_sc_port",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "portfolio"
+      ],
+      "createdAt": "2026-06-07T16:06:00Z",
+      "updatedAt": "2026-06-07T16:06:00Z"
+    },
+    {
+      "id": "action_sc_port_2",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "meetingId": "meeting_sc_port",
+      "title": "Send over the layout references we liked",
+      "description": "Send the editorial layout references after the brainstorm.",
+      "status": "completed",
+      "priority": "low",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-06-08T12:00:00Z",
+      "completedByEntityId": "user_001",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_sc_port",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "references"
+      ],
+      "createdAt": "2026-06-07T16:06:00Z",
+      "updatedAt": "2026-06-08T12:00:00Z"
+    },
+    {
+      "id": "action_lv_seed_1",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "meetingId": "meeting_lv_seed",
+      "title": "Refresh the data room with Q2 cohorts and burn",
+      "description": "Refresh the fundraising data room and add the latest cohort and burn data.",
+      "status": "open",
+      "priority": "high",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-22",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_lv_seed",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "fundraising"
+      ],
+      "createdAt": "2026-06-10T15:46:00Z",
+      "updatedAt": "2026-06-10T15:46:00Z"
+    },
+    {
+      "id": "action_lv_seed_2",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "meetingId": "meeting_lv_seed",
+      "title": "Circulate teaser to investment committee",
+      "description": "Send the teaser to the investment committee once the data room is updated.",
+      "status": "open",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_lena_voss",
+        "displayName": "Lena Voss",
+        "initials": "LV"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": "2026-06-26",
+      "completedAt": null,
+      "completedByEntityId": null,
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_lv_seed",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "investors"
+      ],
+      "createdAt": "2026-06-10T15:46:00Z",
+      "updatedAt": "2026-06-10T15:46:00Z"
+    },
+    {
+      "id": "action_do_tax_1",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "meetingId": "meeting_do_tax",
+      "title": "Upload outstanding equipment receipts",
+      "description": "Upload the remaining equipment receipts before filing.",
+      "status": "completed",
+      "priority": "medium",
+      "assignee": {
+        "entityType": "user",
+        "entityId": "user_001",
+        "displayName": "Dwain Browne",
+        "initials": "DB"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-04-16T12:00:00Z",
+      "completedByEntityId": "user_001",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_do_tax",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "tax"
+      ],
+      "createdAt": "2026-04-15T15:46:00Z",
+      "updatedAt": "2026-04-16T12:00:00Z"
+    },
+    {
+      "id": "action_do_tax_2",
+      "workspaceId": "workspace_001",
+      "companyId": null,
+      "meetingId": "meeting_do_tax",
+      "title": "File Q2 estimated payment",
+      "description": "File the Q2 estimated payment after reviewing the plan.",
+      "status": "completed",
+      "priority": "high",
+      "assignee": {
+        "entityType": "contact",
+        "entityId": "contact_david_okafor",
+        "displayName": "David Okafor",
+        "initials": "DO"
+      },
+      "assignedByUserId": "user_001",
+      "dueDate": null,
+      "completedAt": "2026-04-20T12:00:00Z",
+      "completedByEntityId": "contact_david_okafor",
+      "source": {
+        "type": "seed",
+        "meetingId": "meeting_do_tax",
+        "transcriptSegmentIds": [],
+        "confidenceScore": null
+      },
+      "tags": [
+        "tax"
+      ],
+      "createdAt": "2026-04-15T15:46:00Z",
+      "updatedAt": "2026-04-20T12:00:00Z"
+    }
+  ],
+  "aiJobs": [
+    {
+      "id": "ai_job_001",
+      "workspaceId": "workspace_001",
+      "meetingId": "meeting_nw_q2",
+      "jobType": "meeting-summary",
+      "status": "completed",
+      "input": {
+        "sourceType": "transcript",
+        "transcriptId": "transcript_nw_q2",
+        "includeNotes": true,
+        "includeActionExtraction": true
+      },
+      "output": {
+        "summaryId": "summary_nw_q2"
+      },
+      "error": null,
+      "createdByUserId": "user_001",
+      "createdAt": "2026-06-12T16:04:00Z",
+      "completedAt": "2026-06-12T16:06:00Z"
+    },
+    {
+      "id": "ai_job_1781900271812",
+      "workspaceId": "workspace_001",
+      "meetingId": "meeting_me_comp",
+      "jobType": "meeting-summary",
+      "status": "completed",
+      "input": {
+        "sourceType": "transcript",
+        "transcriptId": "transcript_me_comp",
+        "includeNotes": true,
+        "includeActionExtraction": true
+      },
+      "output": {
+        "summaryId": "summary_me_comp"
+      },
+      "error": null,
+      "createdByUserId": "user_001",
+      "createdAt": "2026-06-19T20:17:51.812Z",
+      "completedAt": "2026-06-19T20:17:51.812Z"
+    }
+  ],
+  "activityLog": [
+    {
+      "id": "activity_001",
+      "workspaceId": "workspace_001",
+      "entityType": "meeting",
+      "entityId": "meeting_nw_q2",
+      "action": "summary.generated",
+      "actorUserId": "user_001",
+      "message": "AI summary generated for Q2 Logistics & Carrier Review.",
+      "metadata": {
+        "aiJobId": "ai_job_001"
+      },
+      "createdAt": "2026-06-12T16:06:00Z"
+    }
+  ]
+}
