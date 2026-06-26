@@ -13,6 +13,34 @@ Most teams already have the raw material: calendar events, transcripts, notes, a
 - Helps spot open and overdue work before it gets missed.
 - Separates business and personal relationships so the workspace stays easy to scan.
 
+## How It Fits With Meeting Note Tools
+
+There are already strong tools that can join meetings, record conversations, create transcripts, and write AI summaries. Examples include:
+
+- [Read AI](https://www.read.ai/)
+- [Otter.ai](https://otter.ai/)
+- [Fireflies.ai](https://fireflies.ai/)
+- [Fathom](https://fathom.video/)
+- [tl;dv](https://tldv.io/)
+- [Sembly AI](https://www.sembly.ai/)
+- [MeetGeek](https://meetgeek.ai/)
+
+Meeting Manager is not trying to replace every recorder or notetaker. The goal is to become the simple workspace where those meeting outputs become useful after the call.
+
+For example, a meeting tool can capture the transcript and summary. Meeting Manager can then organize that information by company, person, meeting history, and follow-up task so the user gets a cleaner view of what matters.
+
+## Integration Goal
+
+The planned integration model is simple:
+
+1. A meeting note tool finishes processing a meeting.
+2. That tool sends Meeting Manager a webhook or API notification.
+3. Meeting Manager receives the transcript, summary, attendees, decisions, and action items.
+4. Meeting Manager matches the meeting to the right company or person.
+5. The user gets a simplified view: meeting history, summary, notes, decisions, open tasks, completed tasks, and overdue follow-up.
+
+This means people can keep using tools like Read AI, Otter.ai, Fireflies.ai, Fathom, and others for capture, while using Meeting Manager as the follow-up workspace across all of them.
+
 ## Who It Is For
 
 This tool is for people who spend a lot of time in meetings and need a reliable way to track outcomes:
