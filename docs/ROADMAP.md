@@ -14,6 +14,7 @@ Priority levels:
 | P1 | Infrastructure | Cloudflare deployment plan for the application |
 | P1 | Infrastructure | Cloudflare project setup for preview and production environments |
 | P1 | Infrastructure | Cloudflare secret management for runtime environment variables |
+| P1 | Infrastructure | Separate public Cloudflare Worker for webhook intake |
 | P1 | Infrastructure | CI checks for build, type safety, and secret scanning |
 | P1 | Infrastructure | Fix the broken lint command and add a working lint check |
 | P1 | Database | Choose the production data store and Cloudflare data architecture |
@@ -51,6 +52,7 @@ Priority levels:
 | P2 | AI | Add action extraction with confidence and review |
 | P2 | AI | Add rewrite summary options |
 | P2 | AI | Add meeting question answering with source references |
+| P2 | Webhook | Implement provider adapters for Read AI, Otter.ai, Fireflies.ai, Fathom, tl;dv, Sembly AI, and MeetGeek |
 | P2 | UX | Responsive layout pass for smaller browser widths |
 | P2 | UX | Better empty states and loading states |
 | P2 | UX | Clearer status language for draft, open, done, and archived meetings |

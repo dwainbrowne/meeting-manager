@@ -71,6 +71,20 @@ The current version is a working prototype. It already lets you:
 
 The app currently uses sample local data so people can understand the experience before it is connected to production infrastructure.
 
+## Repository Layout
+
+- `frontend`: the current Next.js prototype, including the workspace UI, prototype API routes, and local sample data.
+- `backend`: the home for production backend services, including the separate public Cloudflare Worker for webhook intake.
+- `docs`: roadmap, design references, and supporting product documentation.
+
+The current prototype runs from the `frontend` folder:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
 ## What Comes Next
 
 The next phase is focused on getting the foundation right before adding more product polish:
@@ -82,7 +96,7 @@ The next phase is focused on getting the foundation right before adding more pro
 5. Replace prototype AI behavior with secure, server-side AI features.
 6. Improve search, filters, uploads, and day-to-day workflow.
 
-See [ROADMAP.md](ROADMAP.md) for the prioritized work list.
+See [docs/ROADMAP.md](docs/ROADMAP.md) for the prioritized work list.
 
 ## Security Promise
 
