@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "meeting-manager-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-06-26",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "env": {
+    "staging": {
+      "name": "meeting-manager-api-staging",
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 1
+      }
+    },
+    "production": {
+      "name": "meeting-manager-api-production",
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 0.1
+      }
+    }
+  }
+}

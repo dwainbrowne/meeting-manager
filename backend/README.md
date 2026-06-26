@@ -6,6 +6,7 @@ The most important backend decision is that public webhook traffic should not be
 
 Planned backend areas:
 
+- `api-worker`: internal Meeting Manager API backend
 - `webhook-worker`: public webhook intake from meeting note tools
 - production data access layer
 - database migrations and seed workflows

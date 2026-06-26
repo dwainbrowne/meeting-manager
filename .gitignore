@@ -42,6 +42,7 @@ tokens/
 .wrangler/
 .mf/
 .devcontainer/secrets/
+worker-configuration.d.ts
 
 # Terraform and infrastructure state
 .terraform/
