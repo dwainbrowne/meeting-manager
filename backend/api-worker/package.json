@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "wrangler dev --env staging",
     "deploy": "wrangler deploy --env production",
+    "deploy:production": "wrangler deploy --env production",
     "deploy:staging": "wrangler deploy --env staging",
     "dry-run:staging": "wrangler deploy --dry-run --env staging",
     "d1:migrations:local": "wrangler d1 migrations apply meeting-manager-api-staging --env staging --local",

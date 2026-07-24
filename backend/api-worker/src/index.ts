@@ -1908,11 +1908,11 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
     return new Response(null, { status: 204, headers: corsHeaders(request) });
   }
 
-  if (request.method === "GET" && path === "/health") {
+  if (request.method === "GET" && (path === "/health" || path === "/api/health")) {
     return jsonResponse({ ok: true, service: "meeting-manager-api" });
   }
 
-  if (request.method === "GET" && path === "/ready") {
+  if (request.method === "GET" && (path === "/ready" || path === "/api/ready")) {
     return jsonResponse(await getDatabaseReadiness(env.DB));
   }
 
