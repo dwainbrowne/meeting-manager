@@ -85,11 +85,18 @@ Sample data lives in `seeds/sample-data.sql`. Apply it after local or staging mi
 
 ## CI/CD
 
-`.github/workflows/cloudflare-api-worker.yml` validates the Worker on pull requests, deploys staging after pushes to `main`, and supports manual staging or production deploys.
+`.github/workflows/deploy-cloudflare.yml` validates the D1 migration, API Worker,
+and frontend on pull requests. Pushes to `main` deploy staging in dependency order:
+D1 migrations, private API Worker, then frontend Worker. Production is a manual,
+environment-protected deployment.
 
 Required GitHub repository secrets:
 
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
+
+The token should be scoped to this Cloudflare account with only the permissions
+required to edit Workers and D1. The API Worker disables public `workers.dev` and
+preview URLs and is reachable by the frontend through a Cloudflare service binding.
 
 Do not commit `.dev.vars`, Cloudflare tokens, database URLs, webhook secrets, or generated deployment state.

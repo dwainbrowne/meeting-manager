@@ -1,0 +1,143 @@
+name: Deploy Meeting Manager
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Cloudflare environment to deploy
+        required: true
+        default: staging
+        type: choice
+        options:
+          - staging
+          - production
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'staging' }}
+  cancel-in-progress: false
+
+jobs:
+  validate-api:
+    name: Validate API and database
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: backend/api-worker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: backend/api-worker/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Validate deployment bundle
+        run: npm run dry-run:staging
+
+  validate-frontend:
+    name: Validate frontend
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build static frontend
+        run: npm run build
+
+      - name: Validate deployment bundle
+        run: npm run dry-run:staging
+
+  deploy:
+    name: Deploy database, API, and frontend
+    needs:
+      - validate-api
+      - validate-frontend
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'staging' }}
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      DEPLOY_ENV: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'staging' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            backend/api-worker/package-lock.json
+            frontend/package-lock.json
+
+      - name: Install API dependencies
+        working-directory: backend/api-worker
+        run: npm ci
+
+      - name: Apply D1 migrations
+        working-directory: backend/api-worker
+        run: npm run "d1:migrations:${DEPLOY_ENV}"
+
+      - name: Deploy private API Worker
+        working-directory: backend/api-worker
+        run: npm run "deploy:${DEPLOY_ENV}"
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: frontend
+        run: npm run build
+
+      - name: Deploy frontend Worker
+        working-directory: frontend
+        run: npm run "deploy:${DEPLOY_ENV}"
+
+      - name: Verify deployed application
+        if: vars.APP_URL != ''
+        env:
+          APP_URL: ${{ vars.APP_URL }}
+        run: curl --fail-with-body --retry 5 --retry-all-errors --max-time 20 "${APP_URL}/api/ready"

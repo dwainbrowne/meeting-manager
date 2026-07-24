@@ -73,11 +73,11 @@ The app currently uses sample local data so people can understand the experience
 
 ## Repository Layout
 
-- `frontend`: the current Next.js prototype, including the workspace UI, prototype API routes, and local sample data.
+- `frontend`: the Next.js workspace UI, exported as static assets and served by a Cloudflare Worker that privately proxies `/api/*` to the API Worker.
 - `backend`: the home for production backend services, including the separate public Cloudflare Worker for webhook intake.
 - `docs`: roadmap, design references, and supporting product documentation.
 
-The current prototype runs from the `frontend` folder:
+The frontend runs locally from the `frontend` folder:
 
 ```bash
 cd frontend
