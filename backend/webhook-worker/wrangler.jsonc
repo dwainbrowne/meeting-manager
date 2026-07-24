@@ -1,0 +1,54 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "meeting-manager-webhook",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-06-26",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "r2_buckets": [
+    {
+      "binding": "WEBHOOK_EVENTS",
+      "bucket_name": "meeting-manager-webhook-events-dev"
+    }
+  ],
+  "vars": {
+    "MAX_JSON_BYTES": "5242880"
+  },
+  "env": {
+    "staging": {
+      "name": "meeting-manager-webhook-staging",
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 1
+      },
+      "r2_buckets": [
+        {
+          "binding": "WEBHOOK_EVENTS",
+          "bucket_name": "meeting-manager-webhook-events-staging"
+        }
+      ],
+      "vars": {
+        "MAX_JSON_BYTES": "5242880"
+      }
+    },
+    "production": {
+      "name": "meeting-manager-webhook-production",
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 0.1
+      },
+      "r2_buckets": [
+        {
+          "binding": "WEBHOOK_EVENTS",
+          "bucket_name": "meeting-manager-webhook-events-production"
+        }
+      ],
+      "vars": {
+        "MAX_JSON_BYTES": "5242880"
+      }
+    }
+  }
+}

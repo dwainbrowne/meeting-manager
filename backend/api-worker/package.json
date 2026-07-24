@@ -3,16 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "wrangler dev --env staging",
     "deploy": "wrangler deploy --env production",
     "deploy:staging": "wrangler deploy --env staging",
     "dry-run:staging": "wrangler deploy --dry-run --env staging",
+    "d1:migrations:local": "wrangler d1 migrations apply meeting-manager-api-staging --env staging --local",
+    "d1:migrations:staging": "wrangler d1 migrations apply meeting-manager-api-staging --env staging --remote",
+    "d1:migrations:production": "wrangler d1 migrations apply meeting-manager-api-production --env production --remote",
+    "d1:seed:local": "wrangler d1 execute meeting-manager-api-staging --env staging --local --file seeds/sample-data.sql",
+    "d1:seed:staging": "wrangler d1 execute meeting-manager-api-staging --env staging --remote --file seeds/sample-data.sql",
+    "test": "node --test tests/*.test.mjs",
     "typecheck": "wrangler types && tsc --noEmit",
     "types": "wrangler types"
   },
   "devDependencies": {
     "@types/node": "^26.0.1",
+    "esbuild": "^0.28.1",
     "typescript": "^6.0.3",
     "wrangler": "^4.105.0"
   }

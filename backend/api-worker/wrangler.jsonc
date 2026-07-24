@@ -4,6 +4,14 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-06-26",
   "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "meeting-manager-api-staging",
+      "database_id": "a8521e00-8b7e-4f93-97aa-21c54e5c2d7c",
+      "migrations_dir": "migrations"
+    }
+  ],
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1
@@ -11,6 +19,14 @@
   "env": {
     "staging": {
       "name": "meeting-manager-api-staging",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "meeting-manager-api-staging",
+          "database_id": "a8521e00-8b7e-4f93-97aa-21c54e5c2d7c",
+          "migrations_dir": "migrations"
+        }
+      ],
       "observability": {
         "enabled": true,
         "head_sampling_rate": 1
@@ -18,6 +34,14 @@
     },
     "production": {
       "name": "meeting-manager-api-production",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "meeting-manager-api-production",
+          "database_id": "5512bd3d-a916-4826-9106-4f2dc99a9166",
+          "migrations_dir": "migrations"
+        }
+      ],
       "observability": {
         "enabled": true,
         "head_sampling_rate": 0.1
